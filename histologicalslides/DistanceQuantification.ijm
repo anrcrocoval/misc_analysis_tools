@@ -147,7 +147,7 @@ y=Array.trim(y, j);
 run("Clear Results");
 selectWindow("distancemap"+name[1]);
 roiManager("Measure");
-j=0
+j=0;
 for (i = 0; i < nResults; i++) {	
 	
 	
@@ -166,7 +166,7 @@ run("Clear Results");
 selectWindow("distancemap"+name[2]);
 roiManager("Measure");
 
-j=0
+j=0;
 for (i = 0; i < nResults; i++) {	
 	
 	
@@ -185,7 +185,7 @@ run("Clear Results");
 selectWindow("distancemap"+name[3]);
 roiManager("Measure");
 
-j=0
+j=0;
 for (i = 0; i < nResults; i++) {		
 	
 	if (tab[i]<infinityvalue)
