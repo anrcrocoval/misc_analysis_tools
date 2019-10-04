@@ -1,7 +1,17 @@
 //start with atrial image openned
+//TODOS normlized version
+//create new tab with quantile in previous results and copy area
+
+
+
+run("Set Measurements...", "area redirect=None decimal=5");
 mydir=File.directory;
-quantile_atrial_vascular=3;
-quantile_free_base=5;
+Dialog.create("Quantile choice");
+Dialog.addNumber("Quantile Atrial to ventricular",3);
+Dialog.addNumber("Quantile free to base",5);
+Dialog.show();
+quantile_atrial_vascular=Dialog.getNumber();
+quantile_free_base=Dialog.getNumber();
 atrial=getTitle();
 base=replace(atrial, "Atrial_Side", "Base");
 run("32-bit");
@@ -50,3 +60,4 @@ for (a =0; a < quantile_atrial_vascular; a++) {
 }
 
 saveAs("Results", mydir+"ResultsArea_"+quantile_atrial_vascular+"_"+quantile_free_base+".txt");
+saveAs("Text Image", mydir+"Area_"+quantile_atrial_vascular+"_"+quantile_free_base+".txt");

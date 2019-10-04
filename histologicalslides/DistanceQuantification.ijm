@@ -1,6 +1,10 @@
-dirwheretosave="D:/Romain/";
+//run("Options...", "iterations=1 count=1 black");
+
+dirwheretosave="F:/Analyses_histo/PluginCellularite/resultatstest/";
+/**
+ * identify valve
+ */
 ori=getTitle();
-run("8-bit");
 run("Clear Results");
 roiManager("reset");
 // Work from one QupathRegion with one color (possibly optical sum) and with overlay
@@ -8,6 +12,7 @@ roiManager("reset");
 height=getHeight();
 width=getWidth();
 getPixelSize(unit, pixelWidth, pixelHeight);
+run("8-bit");
 run("Gaussian Blur...", "sigma=10");
 
 // Create the mask and morphologically process it
@@ -27,9 +32,16 @@ run("Fill Holes (Binary/Gray)");
 //run("Invert LUT");
 selectWindow(tmp1);
 close();
+//adding report of manual selection
+run("Restore Selection");
+setBackgroundColor(255, 255, 255);
+run("Clear Outside");
 //user interaction to clean for distance;
 waitForUser("remove not valve part and click ok (clear outside the ROI if needed)");
 mask=getTitle();
+/*
+ * identify borders
+ */
 run("Set Measurements...", "area display redirect=None decimal=5");
 //setTool("wand");
 run("Analyze Particles...", "add");
@@ -90,6 +102,11 @@ for(i=2;i<4;i++){
 }
 selectWindow(both);
 close();
+/*
+ * compute geodesic distance map using MorphoLibJ
+ */
+
+
 for(i=0;i<4;i++){
 	newImage("marker"+name[i], "8-bit black", width, height, 1);
 	selectROIbyname(name[i]);
@@ -98,7 +115,9 @@ for(i=0;i<4;i++){
 	rename("distancemap"+name[i]);
 
 }
-
+/*
+* Save nuclei ROI and measure for each nuceli is position on the geodeic distance map
+*/
 roiManager("Deselect");
 
 roiManager("Save", dirwheretosave+ori+"_RoiSetdistance.zip");
@@ -200,24 +219,37 @@ for (i = 0; i < nResults; i++) {
 m3=Array.trim(m3, j);
 
 run("Clear Results");
-Array.getStatistics(m0, min, max, mean, stdDev);
-maxm0=max;
-Array.getStatistics(m1, min, max, mean, stdDev);
-maxm1=max;
-Array.getStatistics(m2, min, max, mean, stdDev);
-maxm2=max;
-Array.getStatistics(m3, min, max, mean, stdDev);
-maxm3=max;
-print(maxm1);
+
+
+
 waitForUser("ok?");
-maxedgetouse=maxm1;//base
+maxedgetouse=infinityvalue;//base
 print(maxedgetouse);
+// Base normalized for quantile estimation
+edgetoprocess="distancemap"+name[1]; //base
+edgetouse="distancemap"+name[3];//atrial
+// get maxbase for base atrial normalization (not the same for ventricular/atrial)
+selectWindow(edgetoprocess);//base
+run("Duplicate...", " ");
+getStatistics(area, mean, min, max, std, histogram);
+changeValues(max,max,0) ;
+
+getStatistics(area, mean, min, max, std, histogram);
+close();
+maxbase=max;
+createnewNormalizeddistancemapforbase(edgetoprocess,edgetouse,maxbase);
+waitForUser("check normalized map base has been generated");
+run("Properties...", "channels=1 slices=1 frames=1 unit=um pixel_width="+pixelWidth+" pixel_height="+pixelWidth+" voxel_depth=1");
+saveAs("Tiff", dirwheretosave+ori+"_distancemapnormalized_"+name[1]+".tif");
+
+// Atrial normalized for quantile estimation
 //maxedgetouse=100;
 edgetoprocess="distancemap"+name[3]; //atrial
 edgetouse="distancemap"+name[1];//base
 
+
 createnewNormalizeddistancemap(edgetoprocess,edgetouse,maxedgetouse);
-waitForUser("check normalized map has been generated")
+waitForUser("check normalized map has been generated");
 selectWindow(edgetoprocess+"_normalized");
 roiManager("Measure");
 j=0;
@@ -243,8 +275,8 @@ for (i=0; i<m0.length; i++) {
       setResult(name[0]+"_rawum",i, m0[i]*pixelWidth);
       setResult(name[1]+"_rawum",i, m1[i]*pixelWidth);
  	 
-      setResult(name[0]+"_normalized", i, m0[i]/maxm0);
-      setResult(name[1]+"_normalized", i, m1[i]/maxm1);
+      setResult(name[0]+"_normalized", i, m0[i]/maxbase);
+      setResult(name[1]+"_normalized", i, m1[i]/maxbase);
 
       setResult(name[2]+"_raw", i, m2[i]);
        setResult(name[2]+"_rawum",i, m2[i]*pixelWidth);
@@ -258,11 +290,15 @@ for (i=0; i<m0.length; i++) {
 saveAs("Results", dirwheretosave+ori+"_Results.csv");
 for(i=0;i<4;i++){	
 	selectWindow("distancemap"+name[i]);
+	run("Properties...", "channels=1 slices=1 frames=1 unit=um pixel_width="+pixelWidth+" pixel_height="+pixelWidth+" voxel_depth=1");
 	saveAs("Tiff", dirwheretosave+ori+"_distancemap_"+name[i]+".tif");
 }
 selectWindow(edgetoprocess+"_normalized");
+run("Properties...", "channels=1 slices=1 frames=1 unit=um pixel_width="+pixelWidth+" pixel_height="+pixelWidth+" voxel_depth=1");
 saveAs("Tiff", dirwheretosave+ori+"_distancemapnormalized_"+name[3]+".tif");
-
+/**
+ * Functions used 
+ */
 function selectROIbyname(nametotest){
 	index=-1;
 	for (i = 0; i <roiManager("count"); i++) {
@@ -279,6 +315,7 @@ function createnewNormalizeddistancemap(edgetoprocess,edgetouse,maxedgetouse){
 newImage(edgetoprocess+"_normalized", "32-bit black", width, height, 1);
 setBatchMode(true);
 
+IJ.log(edgetoprocess+": max="+maxedgetouse);
 	for (v=0;v<=maxedgetouse;v++){
 		showProgress(v/maxedgetouse);
 		selectWindow(edgetouse);
@@ -286,30 +323,46 @@ setBatchMode(true);
 		setThreshold(v, v);
 		setOption("BlackBackground", false);
 		run("Convert to Mask");
+	    
 		getStatistics(area, mean, min, max, std, histogram);
+		
+		
 		if(area!=0){
 			if(min!=max){
-		
-		run("Create Selection");
-		Roi.getContainedPoints(xpoints, ypoints);
-		selectWindow(edgetoprocess);
-		linesvalues=newArray(xpoints.length);
-		for (i = 0; i < xpoints.length; i++) {
+			
+				
+			//problem identifie: pour la base on ne normalize pas par le max le long de la ligne...
+				run("Create Selection");
+				Roi.getContainedPoints(xpoints, ypoints);
+				selectWindow(edgetoprocess);
+				linesvalues=newArray(xpoints.length);
+				for (i = 0; i < xpoints.length; i++) {
 	
-			linesvalues[i]=getValue(xpoints[i], ypoints[i]);
+					linesvalues[i]=getValue(xpoints[i], ypoints[i]);
 	
-		}
-	
-		Array.getStatistics(linesvalues, min, max, mean, stdDev) ;
-		selectWindow(edgetoprocess+"_normalized");
-		for (i=0;i<xpoints.length;i++){
-		setPixel(xpoints[i], ypoints[i], linesvalues[i]/max);
-		}
-		}
+				}
+				
+				Array.getStatistics(linesvalues, min, max, mean, stdDev) ;
+			
+				selectWindow(edgetoprocess+"_normalized");
+				for (i=0;i<xpoints.length;i++){
+				setPixel(xpoints[i], ypoints[i], linesvalues[i]/max);
+				}
+				
+			}
 		}
 		selectWindow("tmp");
 		close();
 	}
 	setBatchMode(false)
 	updateDisplay() ;
+}
+function createnewNormalizeddistancemapforbase(edgetoprocess,edgetouse,maxtouse){
+run("Duplicate...", " ");
+rename(edgetoprocess+"_normalized");
+
+run("32-bit");
+IJ.log(edgetoprocess+": max="+maxtouse);
+run("Divide...", "value="+maxedgetouse);
+run("Enhance Contrast", "saturated=0.35");
 }
