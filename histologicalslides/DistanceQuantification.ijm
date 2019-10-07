@@ -1,6 +1,7 @@
 //run("Options...", "iterations=1 count=1 black");
 
-dirwheretosave="F:/Analyses_histo/PluginCellularite/resultatstest/";
+//dirwheretosave="F:/Analyses_histo/PluginCellularite/resultatstest/";
+dirwheretosave="D:/Romain/";
 /**
  * identify valve
  */
@@ -61,6 +62,7 @@ name=newArray("Free_Edge","Base","Ventricular_side","Atrial_Side")
 for(i=0;i<2;i++){
 	setTool("polygon");
 	waitForUser("Select "+name[i]+" part of the valve as a rough polygon and clik ok");
+	setOption("BlackBackground", false);
 	roiManager("Add");
 	roiManager("Select", newArray(1,2+(i*2)));
 	roiManager("AND");
@@ -68,6 +70,7 @@ for(i=0;i<2;i++){
 	roiManager("Select", 3+(i*2));
 	roiManager("Rename", name[i]);
 }
+
 
 setForegroundColor(255, 255, 255);
 
@@ -139,8 +142,8 @@ m1=newArray(nResults);
 m2=newArray(nResults);
 m3=newArray(nResults);
 tab=newArray(nResults);
-mnormalized=newArray(nResults);
-
+mnormalizedatrial=newArray(nResults);
+mnormalizedbase=newArray(nResults);
 x=newArray(nResults);
 y=newArray(nResults);
 n=nResults;
@@ -220,36 +223,38 @@ m3=Array.trim(m3, j);
 
 run("Clear Results");
 
-
+run("Tile");
 
 waitForUser("ok?");
 maxedgetouse=infinityvalue;//base
 print(maxedgetouse);
-// Base normalized for quantile estimation
+/* Base normalized for quantile estimation
+ *  
+ */
 edgetoprocess="distancemap"+name[1]; //base
 edgetouse="distancemap"+name[3];//atrial
 // get maxbase for base atrial normalization (not the same for ventricular/atrial)
 selectWindow(edgetoprocess);//base
-run("Duplicate...", " ");
+run("Duplicate...", "title=tmpbase");
+selectWindow("tmpbase");
 getStatistics(area, mean, min, max, std, histogram);
 changeValues(max,max,0) ;
 
 getStatistics(area, mean, min, max, std, histogram);
+selectWindow("tmpbase");
 close();
 maxbase=max;
+IJ.log(maxbase);
 createnewNormalizeddistancemapforbase(edgetoprocess,edgetouse,maxbase);
-waitForUser("check normalized map base has been generated");
+run("mpl-inferno");
+setMinAndMax(0, 1);
+
+run("Enhance Contrast", "saturated=0.35");
+
+
 run("Properties...", "channels=1 slices=1 frames=1 unit=um pixel_width="+pixelWidth+" pixel_height="+pixelWidth+" voxel_depth=1");
 saveAs("Tiff", dirwheretosave+ori+"_distancemapnormalized_"+name[1]+".tif");
-
-// Atrial normalized for quantile estimation
-//maxedgetouse=100;
-edgetoprocess="distancemap"+name[3]; //atrial
-edgetouse="distancemap"+name[1];//base
-
-
-createnewNormalizeddistancemap(edgetoprocess,edgetouse,maxedgetouse);
-waitForUser("check normalized map has been generated");
+rename(edgetoprocess+"_normalized");
 selectWindow(edgetoprocess+"_normalized");
 roiManager("Measure");
 j=0;
@@ -257,37 +262,74 @@ for (i = 0; i < nResults; i++) {
 	if (tab[i]<infinityvalue)
 	{
 
-	mnormalized[j]=getResult("Mean", i);
+	mnormalizedbase[j]=getResult("Mean", i);
 	j++;
 	
 	}
 	
 	
 }
-mnormalized=Array.trim(mnormalized, j);
+mnormalizedbase=Array.trim(mnormalizedbase, j);
 run("Clear Results");
+/**
+ * ATRIAL normalized
+ */
+// Atrial normalized for quantile estimation
+//maxedgetouse=100;
+edgetoprocess="distancemap"+name[3]; //atrial
+edgetouse="distancemap"+name[1];//base
 
+
+createnewNormalizeddistancemap(edgetoprocess,edgetouse,maxedgetouse);
+run("mpl-inferno");
+setMinAndMax(0, 1);
+
+run("Enhance Contrast", "saturated=0.35");
+run("Tile");
+waitForUser("check normalized maps for atrial and base has been generated");
+selectWindow(edgetoprocess+"_normalized");
+roiManager("Measure");
+j=0;
+for (i = 0; i < nResults; i++) {	
+	if (tab[i]<infinityvalue)
+	{
+
+	mnormalizedatrial[j]=getResult("Mean", i);
+	j++;
+	
+	}
+	
+	
+}
+mnormalizedatrial=Array.trim(mnormalizedatrial, j);
+run("Clear Results");
+/**
+ * Write results Raw, raw in um, normalized for base and atrial
+ */
 for (i=0; i<m0.length; i++) {
       setResult("x", i,x[i]);
       setResult("y", i, y[i]);
       setResult(name[0]+"_raw", i, m0[i]);
-      setResult(name[1]+"_raw", i, m1[i]);
       setResult(name[0]+"_rawum",i, m0[i]*pixelWidth);
+      setResult(name[1]+"_raw", i, m1[i]);
       setResult(name[1]+"_rawum",i, m1[i]*pixelWidth);
  	 
-      setResult(name[0]+"_normalized", i, m0[i]/maxbase);
-      setResult(name[1]+"_normalized", i, m1[i]/maxbase);
+      setResult(name[1]+"_normalized", i, mnormalizedbase[i]);
 
       setResult(name[2]+"_raw", i, m2[i]);
        setResult(name[2]+"_rawum",i, m2[i]*pixelWidth);
       setResult(name[3]+"_raw", i, m3[i]);
       setResult(name[3]+"_rawum",i, m3[i]*pixelWidth);
-       setResult(name[3]+"_normalized", i, mnormalized[i]);
+      
+       setResult(name[3]+"_normalized", i, mnormalizedatrial[i]);
 
       setResult("totalsurface", i, surfacevalve);
       setResult("totalsurfaceum",i,surfacevalve*pixelWidth*pixelWidth);
     }
 saveAs("Results", dirwheretosave+ori+"_Results.csv");
+/** 
+ *  Set metadata for all and save
+ */
 for(i=0;i<4;i++){	
 	selectWindow("distancemap"+name[i]);
 	run("Properties...", "channels=1 slices=1 frames=1 unit=um pixel_width="+pixelWidth+" pixel_height="+pixelWidth+" voxel_depth=1");
@@ -296,6 +338,8 @@ for(i=0;i<4;i++){
 selectWindow(edgetoprocess+"_normalized");
 run("Properties...", "channels=1 slices=1 frames=1 unit=um pixel_width="+pixelWidth+" pixel_height="+pixelWidth+" voxel_depth=1");
 saveAs("Tiff", dirwheretosave+ori+"_distancemapnormalized_"+name[3]+".tif");
+waitForUser("Done. Results have been saved in "+dirwheretosave);
+
 /**
  * Functions used 
  */
@@ -311,10 +355,14 @@ function selectROIbyname(nametotest){
 	roiManager("select",index);
 }
 
+/**
+ * Function create normalize dfor ATRIAL/VENTRICULAR
+ */
 function createnewNormalizeddistancemap(edgetoprocess,edgetouse,maxedgetouse){
+
 newImage(edgetoprocess+"_normalized", "32-bit black", width, height, 1);
 setBatchMode(true);
-
+changeValues(0,0,infinityvalue) ;
 IJ.log(edgetoprocess+": max="+maxedgetouse);
 	for (v=0;v<=maxedgetouse;v++){
 		showProgress(v/maxedgetouse);
@@ -355,14 +403,25 @@ IJ.log(edgetoprocess+": max="+maxedgetouse);
 		close();
 	}
 	setBatchMode(false)
+	
+	
+	
 	updateDisplay() ;
 }
+
+/**
+ * Function create normalize dfor BASE/FREE
+ */
 function createnewNormalizeddistancemapforbase(edgetoprocess,edgetouse,maxtouse){
 run("Duplicate...", " ");
 rename(edgetoprocess+"_normalized");
 
 run("32-bit");
 IJ.log(edgetoprocess+": max="+maxtouse);
-run("Divide...", "value="+maxedgetouse);
+run("Divide...", "value="+maxtouse);
 run("Enhance Contrast", "saturated=0.35");
+getStatistics(area, mean, min, max, std, histogram);
+changeValues(max,max,infinityvalue) ;
+
+updateDisplay() ;
 }

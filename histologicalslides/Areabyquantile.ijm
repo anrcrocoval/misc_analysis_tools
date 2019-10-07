@@ -1,10 +1,11 @@
-//start with atrial image openned
-//TODOS normlized version
+//start with atrial NORMALIZED image openned
+
 //create new tab with quantile in previous results and copy area
 
 
 
 run("Set Measurements...", "area redirect=None decimal=5");
+
 mydir=File.directory;
 Dialog.create("Quantile choice");
 Dialog.addNumber("Quantile Atrial to ventricular",3);
@@ -36,28 +37,37 @@ for (a =0; a < quantile_atrial_vascular; a++) {
 	run("Select None");
 	n=a+0.00001;
 	setThreshold((n*maxatrial)/quantile_atrial_vascular,((n+1)*maxatrial)/quantile_atrial_vascular);
+	Th_atrial_min=(n*maxatrial)/quantile_atrial_vascular;
+	Th_atrial_max=((n+1)*maxatrial)/quantile_atrial_vascular;
 	run("Convert to Mask");
 	for(b=0;b<quantile_free_base;b++){
 		selectWindow(base);
 		run("Duplicate...", "title=dupbase");
 		n=b+0.00001;
 		setThreshold((n*maxbase)/quantile_free_base,((n+1)*maxbase)/quantile_free_base);
+		Th_base_min=(n*maxbase)/quantile_free_base;
+		Th_base_max=((n+1)*maxbase)/quantile_free_base;
 		run("Convert to Mask");
 		imageCalculator("AND create", "dupbase","dupatrial");
 		result=getTitle();
-		run("Analyze Particles...", "size=100-Infinity display");// warning for now double area are ealed with that to be tested further.
-		waitForUser("check");
+		run("Analyze Particles...", "size=100-Infinity display add");// warning for now double area are ealed with that to be tested further.
+		
 		selectWindow("areatab");
 		setPixel(a, b, getResult("Area", nResults-1));
 		selectWindow(result);
 		close();
 		selectWindow("dupbase");
 		close();
-		
+		setResult("Quantile_atrial", nResults-1, a);
+		setResult("Quantile_base", nResults-1, b);
+		setResult("Th_atrial_min", nResults-1, Th_atrial_min);
+		setResult("Th_atrial_max", nResults-1, Th_atrial_max);
+		setResult("Th_base_min", nResults-1, Th_base_min);
+		setResult("Th_base_max", nResults-1, Th_base_max);
 	}
 	selectWindow("dupatrial");
 		close();
 }
-
-saveAs("Results", mydir+"ResultsArea_"+quantile_atrial_vascular+"_"+quantile_free_base+".txt");
-saveAs("Text Image", mydir+"Area_"+quantile_atrial_vascular+"_"+quantile_free_base+".txt");
+waitForUser("done");
+saveAs("Results", mydir+atrial+"_ResultsArea_"+quantile_atrial_vascular+"_"+quantile_free_base+".txt");
+saveAs("Text Image", mydir+atrial+"_Area_"+quantile_atrial_vascular+"_"+quantile_free_base+".txt");
