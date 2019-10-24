@@ -1,10 +1,11 @@
 //run("Options...", "iterations=1 count=1 black");
 
-//dirwheretosave="F:/Analyses_histo/PluginCellularite/resultatstest/";
-dirwheretosave="D:/Romain/";
+dirwheretosave="F:/Analyses_histo/PluginCellularite/resultatstest/";
+//dirwheretosave="D:/Romain/";
 /**
  * identify valve
  */
+ distminhole=3;
 ori=getTitle();
 run("Clear Results");
 roiManager("reset");
@@ -23,7 +24,7 @@ setOption("BlackBackground", false);
 run("Convert to Mask");
 
 
-run("Invert");
+//run("Invert");
 
 run("Keep Largest Region");
 tmp1=getTitle();
@@ -38,7 +39,7 @@ run("Restore Selection");
 setBackgroundColor(255, 255, 255);
 run("Clear Outside");
 //user interaction to clean for distance;
-waitForUser("remove not valve part and click ok (clear outside the ROI if needed)");
+waitForUser("hello remove not valve part and click ok (clear outside the ROI if needed)");
 mask=getTitle();
 /*
  * identify borders
@@ -360,10 +361,10 @@ function selectROIbyname(nametotest){
  */
 function createnewNormalizeddistancemap(edgetoprocess,edgetouse,maxedgetouse){
 
-newImage(edgetoprocess+"_normalized", "32-bit black", width, height, 1);
-setBatchMode(true);
-changeValues(0,0,infinityvalue) ;
-IJ.log(edgetoprocess+": max="+maxedgetouse);
+	newImage(edgetoprocess+"_normalized", "32-bit black", width, height, 1);
+	setBatchMode(true);
+	changeValues(0,0,infinityvalue) ;
+	IJ.log(edgetoprocess+": max="+maxedgetouse);
 	for (v=0;v<=maxedgetouse;v++){
 		showProgress(v/maxedgetouse);
 		selectWindow(edgetouse);
@@ -377,24 +378,37 @@ IJ.log(edgetoprocess+": max="+maxedgetouse);
 		
 		if(area!=0){
 			if(min!=max){
-			
-				
-			//problem identifie: pour la base on ne normalize pas par le max le long de la ligne...
+
 				run("Create Selection");
 				Roi.getContainedPoints(xpoints, ypoints);
 				selectWindow(edgetoprocess);
 				linesvalues=newArray(xpoints.length);
+				widthhole=0;
+				reali=0;
 				for (i = 0; i < xpoints.length; i++) {
-	
-					linesvalues[i]=getValue(xpoints[i], ypoints[i]);
-	
+					if (getValue(xpoints[i], ypoints[i])<max){
+						linesvalues[reali]=getValue(xpoints[i], ypoints[i]);
+						/**if (reali>0){
+						
+							if (abs(linesvalues[reali]-linesvalues[(reali-1)])>distminhole){
+								if (widthhole==0){
+									widthhole=abs(linesvalues[reali]-linesvalues[(reali-1)]);
+								}
+								linesvalues[reali]=linesvalues[reali]-widthhole;
+							}
+					
+						}
+						
+					}*/
+					}
+				reali++;	
 				}
 				
 				Array.getStatistics(linesvalues, min, max, mean, stdDev) ;
 			
 				selectWindow(edgetoprocess+"_normalized");
 				for (i=0;i<xpoints.length;i++){
-				setPixel(xpoints[i], ypoints[i], linesvalues[i]/max);
+					setPixel(xpoints[i], ypoints[i], linesvalues[i]/max);
 				}
 				
 			}
@@ -403,9 +417,6 @@ IJ.log(edgetoprocess+": max="+maxedgetouse);
 		close();
 	}
 	setBatchMode(false)
-	
-	
-	
 	updateDisplay() ;
 }
 
@@ -413,15 +424,15 @@ IJ.log(edgetoprocess+": max="+maxedgetouse);
  * Function create normalize dfor BASE/FREE
  */
 function createnewNormalizeddistancemapforbase(edgetoprocess,edgetouse,maxtouse){
-run("Duplicate...", " ");
-rename(edgetoprocess+"_normalized");
+	run("Duplicate...", " ");
+	rename(edgetoprocess+"_normalized");
 
-run("32-bit");
-IJ.log(edgetoprocess+": max="+maxtouse);
-run("Divide...", "value="+maxtouse);
-run("Enhance Contrast", "saturated=0.35");
-getStatistics(area, mean, min, max, std, histogram);
-changeValues(max,max,infinityvalue) ;
+	run("32-bit");
+	IJ.log(edgetoprocess+": max="+maxtouse);
+	run("Divide...", "value="+maxtouse);
+	run("Enhance Contrast", "saturated=0.35");
+	getStatistics(area, mean, min, max, std, histogram);
+	changeValues(max,max,infinityvalue) ;
 
-updateDisplay() ;
+	updateDisplay() ;
 }
