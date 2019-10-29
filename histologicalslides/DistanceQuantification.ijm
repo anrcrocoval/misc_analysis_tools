@@ -143,6 +143,7 @@ m1=newArray(nResults);
 m2=newArray(nResults);
 m3=newArray(nResults);
 tab=newArray(nResults);
+roinumber=newArray(nResults);
 mnormalizedatrial=newArray(nResults);
 mnormalizedbase=newArray(nResults);
 x=newArray(nResults);
@@ -152,11 +153,12 @@ infinityvalue=sqrt(pow(width,2)+pow(height,2));
 j=0;
 for (i = 0; i < nResults; i++) {	
 	tab[i]=getResult("Mean", i);
+	
 	if (tab[i]<infinityvalue)
 	{
 
 	m0[j]=tab[i];
-	
+	roinumber[j]=i+1; // labels start at 1
 	
 	x[j]=getResult("X", i);
 	y[j]=getResult("Y", i);
@@ -166,7 +168,7 @@ for (i = 0; i < nResults; i++) {
 m0=Array.trim(m0, j);
 x=Array.trim(x, j);
 y=Array.trim(y, j);
-
+roinumber=Array.trim(roinumber,j);
 run("Clear Results");
 selectWindow("distancemap"+name[1]);
 roiManager("Measure");
@@ -308,6 +310,7 @@ run("Clear Results");
  * Write results Raw, raw in um, normalized for base and atrial
  */
 for (i=0; i<m0.length; i++) {
+      setResult("roi",i,roinumber[i]);
       setResult("x", i,x[i]);
       setResult("y", i, y[i]);
       setResult(name[0]+"_raw", i, m0[i]);
