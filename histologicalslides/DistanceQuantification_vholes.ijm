@@ -15,10 +15,10 @@ height=getHeight();
 width=getWidth();
 getPixelSize(unit, pixelWidth, pixelHeight);
 run("8-bit");
-run("Gaussian Blur...", "sigma=10");
+run("Gaussian Blur...", "sigma=3");
 
 // Create the mask and morphologically process it
-setAutoThreshold("Otsu");
+setAutoThreshold("Triangle");
 //setThreshold(0, 36);
 setOption("BlackBackground", false);
 run("Convert to Mask");
