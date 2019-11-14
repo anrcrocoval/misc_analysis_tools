@@ -1,0 +1,60 @@
+<protocol VERSION="4">
+<blocks>
+<block ID="2125016097" blockType="plugins.adufour.blocks.tools.io.FileToSequence" className="plugins.adufour.blocks.tools.io.FileToSequence" collapsed="false" definedName="File to sequence" height="108" keepsResults="true" width="190" xLocation="72" yLocation="1">
+<variables>
+<input>
+<variable ID="input file" name="input file" runtime="false" value="\\cronos.sante.univ-nantes.prive\ANRCROCOVAL\DatatestEcclem\datatest1\EM_QDots100-HighMag.tif" visible="true"/>
+<variable ID="Series" name="Series" runtime="false" value="0" visible="true"/>
+</input>
+<output>
+<variable ID="sequence" name="sequence" runtime="false" visible="true"/>
+</output>
+</variables>
+</block>
+<block ID="595435824" blockType="plugins.adufour.blocks.tools.io.FileToSequence" className="plugins.adufour.blocks.tools.io.FileToSequence" collapsed="false" definedName="File to sequence" height="108" keepsResults="true" width="190" xLocation="44" yLocation="118">
+<variables>
+<input>
+<variable ID="input file" name="input file" runtime="false" value="\\cronos.sante.univ-nantes.prive\ANRCROCOVAL\DatatestEcclem\datatest1\Fluorescent micrograph-8bits.tif" visible="true"/>
+<variable ID="Series" name="Series" runtime="false" value="0" visible="true"/>
+</input>
+<output>
+<variable ID="sequence" name="sequence" runtime="false" visible="true"/>
+</output>
+</variables>
+</block>
+<block ID="679581982" blockType="plugins.perrine.easyclemv0.EasyCLEMv0" className="plugins.perrine.easyclemv0.EasyCLEMv0" collapsed="false" definedName="Easy CLE mv0" height="127" keepsResults="true" width="725" xLocation="340" yLocation="108">
+<variables>
+<input>
+<variable ID="Source Image" name="Select image that will be transformed and resized (likely FM)" runtime="false" visible="true"/>
+<variable ID="Target Image" name="Select image that will not be modified (likely EM)" runtime="false" visible="true"/>
+<variable ID="Transformation Mode" name="I want to compute the transformation in:" runtime="false" value="Do not allow any scaling other than the one respecting metadata" visible="true"/>
+</input>
+<output>
+<variable ID="Source Transformed on Target" name="Source transformed on Target sequence" runtime="false" visible="true"/>
+</output>
+</variables>
+</block>
+<block ID="1490625979" blockType="plugins.adufour.blocks.tools.Display" className="plugins.adufour.blocks.tools.Display" collapsed="false" definedName="Display" height="190" keepsResults="true" width="144" xLocation="925" yLocation="319">
+<variables>
+<input>
+<variable ID="object" name="object" runtime="false" type="icy.sequence.Sequence" visible="true"/>
+</input>
+<output/>
+</variables>
+</block>
+<block ID="288596167" blockType="plugins.adufour.blocks.tools.Display" className="plugins.adufour.blocks.tools.Display" collapsed="false" definedName="Display" height="458" keepsResults="true" width="469" xLocation="118" yLocation="297">
+<variables>
+<input>
+<variable ID="object" name="object" runtime="false" type="icy.sequence.Sequence" visible="true"/>
+</input>
+<output/>
+</variables>
+</block>
+</blocks>
+<links>
+<link dstBlockID="1490625979" dstVarID="object" srcBlockID="679581982" srcVarID="Source Transformed on Target"/>
+<link dstBlockID="679581982" dstVarID="Source Image" srcBlockID="2125016097" srcVarID="sequence"/>
+<link dstBlockID="679581982" dstVarID="Target Image" srcBlockID="595435824" srcVarID="sequence"/>
+<link dstBlockID="288596167" dstVarID="object" srcBlockID="2125016097" srcVarID="sequence"/>
+</links>
+</protocol>
