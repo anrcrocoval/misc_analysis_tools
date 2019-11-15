@@ -47,7 +47,7 @@ Fluorescent micrograph-8bits.tif_to_EM_QDots100-HighMag_points.xml
 Exiting...
 EHCache disposed
 
-To add a command line input (to do once)  here is the procedure for example for your csv or other files) : (I can also do it for you if you send me your actual protocol.xml)
+To add a command line input (to do once)  here is the procedure for example for your csv or other files) : 
 - Load your protocol from Protocol in ICY 
 - Right click on workspace, go to Read… then select File
 - This will create a File block.
@@ -56,7 +56,6 @@ To add a command line input (to do once)  here is the procedure for example for 
 - repeat for all file that you need to input /output from the command file
 
 4) NOTE that the EC CLEM block has no output filename for the xml, since it's name is constructed from the source and target name files.
-I ve also forgot to add in the xml file the source (Moving) and target (fixed) filename, this is a good thing (and quick) to do,
-but it would be nice to get your feedback in order to confirm that the element sent are already working. 
+I ve also forgot to add in the xml file the source (Moving) and target (fixed) filename, this is a good thing (and quick) TODO
 _points.xml contains the roi point (source and target)
 _transfo.xml  contains the transfo matrix (final one)
