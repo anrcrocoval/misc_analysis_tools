@@ -386,25 +386,11 @@ function createnewNormalizeddistancemap(edgetoprocess,edgetouse,maxedgetouse){
 				Roi.getContainedPoints(xpoints, ypoints);
 				selectWindow(edgetoprocess);
 				linesvalues=newArray(xpoints.length);
-				widthhole=0;
-				reali=0;
+				
 				for (i = 0; i < xpoints.length; i++) {
-					if (getValue(xpoints[i], ypoints[i])<max){
-						linesvalues[reali]=getValue(xpoints[i], ypoints[i]);
-						/**if (reali>0){
-						
-							if (abs(linesvalues[reali]-linesvalues[(reali-1)])>distminhole){
-								if (widthhole==0){
-									widthhole=abs(linesvalues[reali]-linesvalues[(reali-1)]);
-								}
-								linesvalues[reali]=linesvalues[reali]-widthhole;
-							}
 					
-						}
+						linesvalues[i]=getValue(xpoints[i], ypoints[i]);
 						
-					}*/
-					}
-				reali++;	
 				}
 				
 				Array.getStatistics(linesvalues, min, max, mean, stdDev) ;
