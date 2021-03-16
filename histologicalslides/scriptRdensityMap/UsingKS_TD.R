@@ -1,35 +1,49 @@
 
 #install.packages("ks")
-
+#install.packages("corrplot")
 library("ks")
-set.seed(8192)
-samp <- 1000
-x <- rnorm.mixt(n=samp, mus=0, sigmas=1, props=1)
-y <- rnorm.mixt(n=samp, mus=0, sigmas=1, props=1)
-kde.test(x1=x, x2=y)$pvalue ## accept H0: f1=f2
+library("corrplot")
+## p value > 0.05 accept H0: f1=f2
 
-library(MASS)
-data(crabs)
-x1 <- crabs[crabs$sp=="B", c(4,6)]
-x2 <- crabs[crabs$sp=="O", c(4,6)]
-kde.test(x1=x1, x2=x2)$pvalue ## reject H0: f1=f2
+## pvalue < 0.05 reject H0: f1=f2
 
-nomsfichiers=list.files("C:/Users/perri/GITHUB/misc_analysis_tools/histologicalslides/data/Analyse_Maps/") 
-     
-input <-"C:/Users/perri/GITHUB/misc_analysis_tools/histologicalslides/data/Analyse_Maps/3W_WT/493_3W_ant.csv"
-nucleidata <- read.csv(input,header= TRUE,sep=";")
-yn<-nucleidata[,1]
-xn<-nucleidata[,2]
-coordinates<-c(xn,yn)
-dim(coordinates)<-c( NROW(xn),2)
-plot(coordinates)
+nomsfichiers=list.files("C:/Users/perri/GITHUB/misc_analysis_tools/histologicalslides/data/Analyse_Maps/",recursive= TRUE, pattern
+= "*.csv") 
+nbfiles=length(nomsfichiers)
+M <-as.data.frame(matrix(ncol=nbfiles, nrow=nbfiles),row.names=nomsfichiers)
 
-input <-"C:/Users/perri/GITHUB/misc_analysis_tools/histologicalslides/data/Analyse_Maps/3W_KI/510_3W_ant.csv"
-nucleidata <- read.csv(input,header= TRUE,sep=";")
-yn<-nucleidata[,1]
-xn<-nucleidata[,2]
-coordinates2<-c(xn,yn)
-dim(coordinates2)<-c( NROW(xn),2)
-plot(coordinates2)
+M[is.na(M)] <- 0
+ colnames(M)<-nomsfichiers
+i=0
+j=0
+for (nom in nomsfichiers) {
+	i=i+1
+	j=0
+	for (nom2 in nomsfichiers){
+	j=j+1
+		input1 <-file.path("C:/Users/perri/GITHUB/misc_analysis_tools/histologicalslides/data/Analyse_Maps", nom)
+		nucleidata <- read.csv(input1,header= TRUE,sep=";")
+		yn<-nucleidata[,1]
+		xn<-nucleidata[,2]
+		coordinates<-c(xn,yn)
+		dim(coordinates)<-c( NROW(xn),2)
+		#plot(coordinates)
 
-kde.test(x1=coordinates, x2=coordinates2)$pvalue
+		input2 <-file.path("C:/Users/perri/GITHUB/misc_analysis_tools/histologicalslides/data/Analyse_Maps/", nom2)
+		nucleidata <- read.csv(input2,header= TRUE,sep=";")
+		yn<-nucleidata[,1]
+		xn<-nucleidata[,2]
+		coordinates2<-c(xn,yn)
+		dim(coordinates2)<-c( NROW(xn),2)
+		#plot(coordinates2)
+		print(input1)
+		print(input2)
+		M
+		print(kde.test(x1=coordinates, x2=coordinates2)$pvalue)
+		M[i,j]<-kde.test(x1=coordinates, x2=coordinates2)$pvalue	
+	
+	}
+}  
+Mdata=data.matrix(M)        
+corrplot(Mdata, is.corr=FALSE, method="color")
+corrplot(Mdata, is.corr=FALSE, method="number")
