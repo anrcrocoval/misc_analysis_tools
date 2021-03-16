@@ -44,6 +44,9 @@ for (nom in nomsfichiers) {
 	
 	}
 }  
-Mdata=data.matrix(M)        
-corrplot(Mdata, is.corr=FALSE, method="color")
+Mdata=data.matrix(M)   
+col3 <- colorRampPalette(c("red", "yellow", "blue"))      
+corrplot(Mdata, is.corr=FALSE, method="color",col = col3(100))
 corrplot(Mdata, is.corr=FALSE, method="number")
+corrplot(Mdata, is.corr=FALSE, method="color", order="hclust")
+ write.csv(M,"C:/Users/perri/GITHUB/misc_analysis_tools/histologicalslides/exportdensitymaptest.csv")
