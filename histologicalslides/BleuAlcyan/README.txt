@@ -27,4 +27,10 @@ comme le bleu alcyan est un marquage "diffus", i.e n'esp pas associé à des obj
 
 résultats sur 4 valves KI et 4 valves WT 
 
+La coloration au bleu alcian permet de colorer les mucosités acides et les mucines acétiques.
+Des quantités excessives de mucosités acides non sulfatées sont observées dans les mésothéliomes. Ces mucosités sont présentent en quantités normales dans les parois des vaisseaux sanguins mais augmentent dans les lésions précoces d'athérosclérose.
+La coloration au bleu Alcian repose sur un groupe de colorants basiques polyvalents qui sont solubles dans l'eau. La couleur bleue est due à la présente de cuivre.
+Le pH de la solution de coloration au bleu Alcian est très important et a un effet direct sur la catégorie de mucines révélées par cette méthode. Le pH de la solution de coloration au bleu Alcian peut être compris entre 0.4 et 2.5.
+Si l e pH de la solution est de 1.0, la solution va colorer les mucines acides sulfatées. Ces mucines se retrouvent principalement dans le cartilage, les cellules caliciformes du gros intestin et les.glandes séreuses bronchiques
+Si la solution de coloration au bleu Alcian a un pH de 2.5, ce sont les mucines carboxylées dans les tissus conjonctifs et le cartilage qui seront colorées.
 
