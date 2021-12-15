@@ -1,0 +1,75 @@
+{
+  "pixel_classifier_type": "OpenCVPixelClassifier",
+  "metadata": {
+    "inputPadding": 0,
+    "inputResolution": {
+      "pixelWidth": {
+        "value": 0.9120342924893976,
+        "unit": "µm"
+      },
+      "pixelHeight": {
+        "value": 0.9120342924893976,
+        "unit": "µm"
+      },
+      "zSpacing": {
+        "value": 1.0,
+        "unit": "z-slice"
+      },
+      "timeUnit": "SECONDS",
+      "timepoints": []
+    },
+    "inputWidth": 512,
+    "inputHeight": 512,
+    "inputNumChannels": 3,
+    "outputType": "CLASSIFICATION",
+    "outputChannels": [],
+    "classificationLabels": {
+      "0": {},
+      "1": {
+        "name": "BA positive",
+        "colorRGB": -2491035
+      }
+    }
+  },
+  "op": {
+    "type": "data.op.channels",
+    "colorTransforms": [
+      {
+        "stains": {
+          "name": "BA stains",
+          "stain1": {
+            "r": 0.3988789989125611,
+            "g": 0.83920789771212,
+            "b": 0.3696290689923034,
+            "name": "Hematoxylin",
+            "isResidual": false
+          },
+          "stain2": {
+            "r": 0.8917427892992696,
+            "g": 0.39596123968885416,
+            "b": 0.21911068982782309,
+            "name": "BA",
+            "isResidual": false
+          },
+          "stain3": {
+            "r": 0.058692786524505096,
+            "g": 0.3788927417382369,
+            "b": -0.9235775262900622,
+            "name": "Residual",
+            "isResidual": true
+          },
+          "maxRed": 255.0,
+          "maxGreen": 255.0,
+          "maxBlue": 255.0
+        },
+        "stainNumber": 2
+      }
+    ],
+    "op": {
+      "type": "op.threshold.constant",
+      "thresholds": [
+        0.2
+      ]
+    }
+  }
+}
