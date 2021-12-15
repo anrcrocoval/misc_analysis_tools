@@ -2,11 +2,11 @@
 
 //dirwheretosave="F:/Analyses_histo/PluginCellularite/resultatstest/";
 
-dirwheretosave="D:/Romain/BleuAlcyan";
+dirwheretosave="C:/Users/perri/GITHUB/misc_analysis_tools/histologicalslides/BleuAlcyan/test";
 /**
  * identify valve
  */
- distminhole=3;
+distminhole=3;
 ori=getTitle();
 run("Clear Results");
 roiManager("reset");
