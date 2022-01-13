@@ -17,8 +17,10 @@ Age: 3W or 6W
 0) set the correct staining (initialised by selected ROI containing only H, and then only BA, the, refined by preprocessing, estimate stain vectors).
 Created a script (BAstainScript.groovy) and then apply to all image in project. 
 1) dessiner une roi autour d'un des feuillet de la valve
-2) Segmenter le bleu d'alcian? (create pixel classifier threshold 0.2), resolution Very high
+2) Segmenter le bleu d'alcian? (create pixel classifier threshold 0.2), resolution Very high (cf scripts BApos): verifier que seuillage ok
 3) Exporter le color scheme original pour pouvoir segmenter la valve sous Fiji (Distance quantification)
+-> lancer ensuite Createdistance, createquantile, et quantif ratio
+Rajouter les noms de fichiers et trcuspid/mitral
 
 comme le bleu alcyan est un marquage "diffus", i.e n'esp pas associé à des objets spécifiques dans l'image:
 
