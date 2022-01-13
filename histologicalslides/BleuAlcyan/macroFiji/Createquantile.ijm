@@ -72,4 +72,4 @@ for (a =0; a < quantile_atrial_vascular; a++) {
 
 roiManager("Deselect");
 roiManager("Save", mydir+"RoiSet_quantile.zip");
-waitForUser("done, ROI with valvular part were saved under" +mydir+"RoiSet_quantile.zip);
+waitForUser("done, ROI with valvular part were saved under" +mydir+"RoiSet_quantile.zip");

@@ -15,6 +15,10 @@ for (n in listfile)
 		print(n)
 		dat <-read.csv(n, sep=",")
 		plot(dat$storenormalizedpos[-1],dat$storewidthum[-1]) #plot all but first element
-		
+		readline(prompt="Press [enter] to continue")
+		readline(prompt="Press [enter] to continue")
+
+
 	}
 }
+

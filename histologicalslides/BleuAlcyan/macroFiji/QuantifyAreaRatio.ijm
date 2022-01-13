@@ -1,9 +1,10 @@
 //Open the exported image from QUPATH
+run("Clear Results");
 run("8-bit");
 run("To ROI Manager");
 
 roiManager("Select", 0);
-
+title=getTitle();
 setBackgroundColor(0, 0, 0);
 run("Clear Outside");
 setForegroundColor(255, 255, 255);
@@ -23,3 +24,4 @@ for (i = 0; i < nResults(); i++) {
     setResult('ratio', i, (v* pixelWidth* pixelHeight/255)/area);
 }
 updateResults();
+saveAs("Results", "C:/Users/perri/GITHUB/misc_analysis_tools/histologicalslides/BleuAlcyan/test/"+title+"_Results.csv");
