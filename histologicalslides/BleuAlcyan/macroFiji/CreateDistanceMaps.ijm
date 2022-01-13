@@ -2,7 +2,7 @@
 
 //dirwheretosave="F:/Analyses_histo/PluginCellularite/resultatstest/";
 
-dirwheretosave="C:/Users/perri/GITHUB/misc_analysis_tools/histologicalslides/BleuAlcyan/test";
+dirwheretosave="C:/Users/perri/GITHUB/misc_analysis_tools/histologicalslides/BleuAlcyan/test/";
 /**
  * identify valve
  */
@@ -37,7 +37,8 @@ selectWindow(tmp1);
 close();
 //adding report of manual selection
 run("Restore Selection");
-setBackgroundColor(255, 255, 255);
+setBackgroundColor(0, 0, 0);
+setForegroundColor(255,255,255);
 run("Clear Outside");
 //user interaction to clean for distance;
 waitForUser("hello remove not valve part and click ok (clear outside the ROI if needed)");
@@ -155,7 +156,7 @@ getStatistics(area, mean, min, max, std, histogram);
 selectWindow("tmpbase");
 close();
 maxbase=max;
-IJ.log(maxbase);
+IJ.log("max for base "+maxbase);
 createnewNormalizeddistancemapforbase(edgetoprocess,edgetouse,maxbase);
 run("mpl-inferno");
 setMinAndMax(0, 1);
@@ -175,9 +176,8 @@ rename(edgetoprocess+"_normalized");
 //maxedgetouse=100;
 edgetoprocess="distancemap"+name[3]; //atrial
 edgetouse="distancemap"+name[1];//base
-
-
-createnewNormalizeddistancemap(edgetoprocess,edgetouse,maxedgetouse);
+IJ.log("max from "+ edgetoprocess+" using "+edgetouse+"= "+ maxedgetouse);
+createnewNormalizeddistancemap(edgetoprocess,edgetouse,maxbase,true); // change here for normalization purpose
 run("mpl-inferno");
 setMinAndMax(0, 1);
 
@@ -214,13 +214,21 @@ function selectROIbyname(nametotest){
 /**
  * Function create normalize dfor ATRIAL/VENTRICULAR
  */
-function createnewNormalizeddistancemap(edgetoprocess,edgetouse,maxedgetouse){
-
+function createnewNormalizeddistancemap(edgetoprocess,edgetouse,maxedgetouse,logwidth){
+	
 	newImage(edgetoprocess+"_normalized", "32-bit black", width, height, 1);
 	setBatchMode(true);
 	changeValues(0,0,infinityvalue) ;
 	IJ.log(edgetoprocess+": max="+maxedgetouse);
+	if (logwidth){
+	IJ.log("will save the width as "+dirwheretosave+ori+"Absolutewidth.csv");	
+	storewidthraw=newArray(maxedgetouse+1);
+	storewidthum=newArray(maxedgetouse+1);
+	storepos=newArray(maxedgetouse+1);
+	storenormalizedpos=newArray(maxedgetouse+1);
+	}
 	for (v=0;v<=maxedgetouse;v++){
+		
 		showProgress(v/maxedgetouse);
 		selectWindow(edgetouse);
 		run("Duplicate...", "title=tmp");
@@ -229,7 +237,11 @@ function createnewNormalizeddistancemap(edgetoprocess,edgetouse,maxedgetouse){
 		run("Convert to Mask");
 	    
 		getStatistics(area, mean, min, max, std, histogram);
-		
+
+		if (logwidth){
+		storenormalizedpos[v]=v/maxedgetouse;
+		storepos[v]=v;
+		}
 		
 		if(area!=0){
 			if(min!=max){
@@ -246,7 +258,10 @@ function createnewNormalizeddistancemap(edgetoprocess,edgetouse,maxedgetouse){
 				}
 				
 				Array.getStatistics(linesvalues, min, max, mean, stdDev) ;
-			
+				if (logwidth){
+				storewidthraw[v]=max;
+				storewidthum[v]=max*pixelWidth;
+				}
 				selectWindow(edgetoprocess+"_normalized");
 				for (i=0;i<xpoints.length;i++){
 					setPixel(xpoints[i], ypoints[i], linesvalues[i]/max);
@@ -257,8 +272,14 @@ function createnewNormalizeddistancemap(edgetoprocess,edgetouse,maxedgetouse){
 		selectWindow("tmp");
 		close();
 	}
-	setBatchMode(false)
-	updateDisplay() ;
+	setBatchMode(false);
+	updateDisplay();
+	if (logwidth){
+	Array.show("Absolutewidth", storenormalizedpos, storewidthraw, storewidthum);
+	selectWindow("Absolutewidth");
+	saveAs("Results", dirwheretosave+ori+"Absolutewidth.csv");
+	}
+
 }
 
 /**

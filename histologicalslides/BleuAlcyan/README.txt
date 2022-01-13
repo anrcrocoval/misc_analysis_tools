@@ -3,7 +3,7 @@ Quantify the repartition of collagen staining , and nuclei?
 On mitral valves KI and WT, 
 with geodesic distances.
 
-** Load image in project QUPATH (version used 0.3.0)
+** Load image in project QUPATH (version used 0.3.1)
 *Mix of czi and ndpi *
 In version 0.3.0 open natively.
 Otherwise follow instruction here:
@@ -24,9 +24,8 @@ Rajouter les noms de fichiers et trcuspid/mitral
 
 comme le bleu alcyan est un marquage "diffus", i.e n'esp pas associé à des objets spécifiques dans l'image:
 
-- soit mesurer l'intensité du bleu alcyan (après déconvolution couleur) dans les zones normalisées définies, peut etre en prenant plus de zones (par exemple 5x5)
 
-- soit de mesurer le ratio de recouvrement de ces zones , en ayant donc mis un seuil sur le bleu alcyan,
+mesurer le ratio de recouvrement de ces zones , en ayant donc mis un seuil sur le bleu alcyan,
 
 résultats sur 4 valves KI et 4 valves WT 
 
@@ -37,3 +36,10 @@ Le pH de la solution de coloration au bleu Alcian est très important et a un ef
 Si l e pH de la solution est de 1.0, la solution va colorer les mucines acides sulfatées. Ces mucines se retrouvent principalement dans le cartilage, les cellules caliciformes du gros intestin et les.glandes séreuses bronchiques
 Si la solution de coloration au bleu Alcian a un pH de 2.5, ce sont les mucines carboxylées dans les tissus conjonctifs et le cartilage qui seront colorées.
 
+***LLocalisation de l'elargissement sur coupe histo***
+
+Launch CreateDistanceMaps (with the looging of Atrial/ventricular length)
+MorpholibJ should be installed https://imagej.net/plugins/morpholibj  IJPB-plugins site to your list of update sites
+cite Legland, D., Arganda-Carreras, I., & Andrey, P. (2016). MorphoLibJ: integrated library and plugins for mathematical morphology with ImageJ. Bioinformatics, btw413. doi:10.1093/bioinformatics/btw413
+
+Script R pour plotter
