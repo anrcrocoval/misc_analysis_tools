@@ -1,7 +1,8 @@
 //run("Options...", "iterations=1 count=1 black");
 
 //dirwheretosave="F:/Analyses_histo/PluginCellularite/resultatstest/";
-
+logwidth=true;
+logBA=true;
 dirwheretosave="C:/Users/perri/GITHUB/misc_analysis_tools/histologicalslides/BleuAlcyan/test/";
 /**
  * identify valve
@@ -177,7 +178,7 @@ rename(edgetoprocess+"_normalized");
 edgetoprocess="distancemap"+name[3]; //atrial
 edgetouse="distancemap"+name[1];//base
 IJ.log("max from "+ edgetoprocess+" using "+edgetouse+"= "+ maxedgetouse);
-createnewNormalizeddistancemap(edgetoprocess,edgetouse,maxbase,true); // change here for normalization purpose
+createnewNormalizeddistancemap(edgetoprocess,edgetouse,maxbase,logwidth,logBA); // change here for normalization purpose
 run("mpl-inferno");
 setMinAndMax(0, 1);
 
@@ -214,7 +215,7 @@ function selectROIbyname(nametotest){
 /**
  * Function create normalize dfor ATRIAL/VENTRICULAR
  */
-function createnewNormalizeddistancemap(edgetoprocess,edgetouse,maxedgetouse,logwidth){
+function createnewNormalizeddistancemap(edgetoprocess,edgetouse,maxedgetouse,logwidth,logBA){
 	
 	newImage(edgetoprocess+"_normalized", "32-bit black", width, height, 1);
 	setBatchMode(true);
@@ -226,6 +227,13 @@ function createnewNormalizeddistancemap(edgetoprocess,edgetouse,maxedgetouse,log
 	storewidthum=newArray(maxedgetouse+1);
 	storepos=newArray(maxedgetouse+1);
 	storenormalizedpos=newArray(maxedgetouse+1);
+	}
+	if (logBA){
+	IJ.log("will save the width as "+dirwheretosave+ori+"BApcline.csv");	
+	storeBAraw=newArray(maxedgetouse+1);
+	storeBApc=newArray(maxedgetouse+1);
+	storeposBA=newArray(maxedgetouse+1);
+	storenormalizedposBA=newArray(maxedgetouse+1);
 	}
 	for (v=0;v<=maxedgetouse;v++){
 		
@@ -242,7 +250,10 @@ function createnewNormalizeddistancemap(edgetoprocess,edgetouse,maxedgetouse,log
 		storenormalizedpos[v]=v/maxedgetouse;
 		storepos[v]=v;
 		}
-		
+		if (logBA){
+		storenormalizedposBA[v]=v/maxedgetouse;
+		storeposBA[v]=v;
+		}
 		if(area!=0){
 			if(min!=max){
 
@@ -262,6 +273,17 @@ function createnewNormalizeddistancemap(edgetoprocess,edgetouse,maxedgetouse,log
 				storewidthraw[v]=max;
 				storewidthum[v]=max*pixelWidth;
 				}
+				if (logBA){
+				// go to the BA mask
+				for (i = 0; i < xpoints.length; i++) {
+					
+						linesvaluesBA[i]=getValue(xpoints[i], ypoints[i]);
+						
+				}
+				Array.getStatistics(linesvaluesBA, min, max, mean, stdDev) ;	
+				storeBAraw[v]=(mean*xpoint.length)/255.0; // got nb of pixels by sum of intensity value /255 , integrated intensity been not directly availble, equivalent to mean * nb pixel on the line
+				storeBApc[v]=mean/255.0; // divided by nb points = xpoint.length
+				}
 				selectWindow(edgetoprocess+"_normalized");
 				for (i=0;i<xpoints.length;i++){
 					setPixel(xpoints[i], ypoints[i], linesvalues[i]/max);
@@ -278,6 +300,11 @@ function createnewNormalizeddistancemap(edgetoprocess,edgetouse,maxedgetouse,log
 	Array.show("Absolutewidth", storenormalizedpos, storewidthraw, storewidthum);
 	selectWindow("Absolutewidth");
 	saveAs("Results", dirwheretosave+ori+"Absolutewidth.csv");
+	}
+	if (logBA){
+	Array.show("AbsoluteBA", storenormalizedposBA, storeBAraw, storeBApc);
+	selectWindow("AbsoluteBA");
+	saveAs("Results", dirwheretosave+ori+"AbsoluteBA.csv");
 	}
 
 }

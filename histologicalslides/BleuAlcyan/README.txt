@@ -39,8 +39,18 @@ Si la solution de coloration au bleu Alcian a un pH de 2.5, ce sont les mucines 
 
 ***LLocalisation de l'elargissement sur coupe histo***
 
-Launch CreateDistanceMaps (with the looging of Atrial/ventricular length)
+Launch CreateDistanceMaps (with the logging of Atrial/ventricular length logwidth=true and the logging of BA logBA=true)
 MorpholibJ should be installed https://imagej.net/plugins/morpholibj  IJPB-plugins site to your list of update sites
 cite Legland, D., Arganda-Carreras, I., & Andrey, P. (2016). MorphoLibJ: integrated library and plugins for mathematical morphology with ImageJ. Bioinformatics, btw413. doi:10.1093/bioinformatics/btw413
 
 Script R pour plotter
+
+**
+
+ANTERIEUR POSTERIEUR Anterior coté de l'autre cavité , posterieur vers l'exterieur
+Atrial vers les oreillettes quanc c'est ferme et ventriculaire vers la cavité
+
+Base bien perpandicaulire pour les distances maps.
+
+
+Faire grahe part feuillet epaississement et le nb ixel positif dans la ligne epaississment voir photo (voir aussi en celularité)
