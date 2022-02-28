@@ -19,7 +19,7 @@ Created a script (BAstainScript.groovy) and then apply to all image in project.
 1) dessiner une roi autour d'un des feuillet de la valve
 2) Segmenter le bleu d'alcian? (create pixel classifier threshold 0.2), resolution Very high (cf scripts BApos): verifier que seuillage ok
 Load pixel classifier, load classifyBA, export object as annotations
-3) Exporter le color scheme original pour pouvoir segmenter la valve sous Fiji (Distance quantification)
+3) Exporter le color scheme original Resolution 2, Include ROI, include Overlay, do NOT apply color transform pour pouvoir segmenter la valve sous Fiji (Distance quantification)
 -> lancer ensuite Createdistance, createquantile, et quantif ratio
 Rajouter les noms de fichiers et trcuspid/mitral
 
