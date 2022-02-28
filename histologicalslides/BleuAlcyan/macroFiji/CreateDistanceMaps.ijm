@@ -3,16 +3,33 @@
 //dirwheretosave="F:/Analyses_histo/PluginCellularite/resultatstest/";
 logwidth=true;
 logBA=true;
-dirwheretosave="C:/Users/perri/GITHUB/misc_analysis_tools/histologicalslides/BleuAlcyan/test/";
+//dirwheretosave="C:/Users/perri/GITHUB/misc_analysis_tools/histologicalslides/BleuAlcyan/test/";
+dirwheretosave="C:/Users/paul-gilloteaux-p/Documents/GitHub/ANRCROCOVAL/misc_analysis_tools/histologicalslides/BleuAlcyan/test/";
 /**
  * identify valve
  */
 distminhole=3;
 ori=getTitle();
+titleBA=ori;
+if (logBA){
+	run("Duplicate...", " ");
+	run("8-bit");
+	run("To ROI Manager");
+
+	roiManager("Select", 0);
+	
+	setBackgroundColor(0, 0, 0);
+	run("Clear Outside");
+	setForegroundColor(255, 255, 255);
+	run("Fill", "slice");
+	titleBA=getTitle();
+}
+
 run("Clear Results");
 roiManager("reset");
 // Work from one QupathRegion with one color (possibly optical sum) and with overlay
 // Smooth to help
+selectWindow(ori);
 height=getHeight();
 width=getWidth();
 getPixelSize(unit, pixelWidth, pixelHeight);
@@ -62,7 +79,7 @@ roiManager("Add");
 roiManager("Select", 1);
 roiManager("Rename", "ring");
 
-name=newArray("Free_Edge","Base","Ventricular_side","Atrial_Side")
+name=newArray("Free_Edge","Base","Ventricular_side","Atrial_Side");
 for(i=0;i<2;i++){
 	setTool("polygon");
 	waitForUser("Select "+name[i]+" part of the valve as a rough polygon and clik ok");
@@ -178,7 +195,7 @@ rename(edgetoprocess+"_normalized");
 edgetoprocess="distancemap"+name[3]; //atrial
 edgetouse="distancemap"+name[1];//base
 IJ.log("max from "+ edgetoprocess+" using "+edgetouse+"= "+ maxedgetouse);
-createnewNormalizeddistancemap(edgetoprocess,edgetouse,maxbase,logwidth,logBA); // change here for normalization purpose
+createnewNormalizeddistancemap(edgetoprocess,edgetouse,maxbase,logwidth,logBA,titleBA); // change here for normalization purpose
 run("mpl-inferno");
 setMinAndMax(0, 1);
 
@@ -215,7 +232,7 @@ function selectROIbyname(nametotest){
 /**
  * Function create normalize dfor ATRIAL/VENTRICULAR
  */
-function createnewNormalizeddistancemap(edgetoprocess,edgetouse,maxedgetouse,logwidth,logBA){
+function createnewNormalizeddistancemap(edgetoprocess,edgetouse,maxedgetouse,logwidth,logBA, maskBA){
 	
 	newImage(edgetoprocess+"_normalized", "32-bit black", width, height, 1);
 	setBatchMode(true);
@@ -229,7 +246,7 @@ function createnewNormalizeddistancemap(edgetoprocess,edgetouse,maxedgetouse,log
 	storenormalizedpos=newArray(maxedgetouse+1);
 	}
 	if (logBA){
-	IJ.log("will save the width as "+dirwheretosave+ori+"BApcline.csv");	
+	IJ.log("will save BA as "+dirwheretosave+ori+"BApcline.csv");	
 	storeBAraw=newArray(maxedgetouse+1);
 	storeBApc=newArray(maxedgetouse+1);
 	storeposBA=newArray(maxedgetouse+1);
@@ -261,7 +278,7 @@ function createnewNormalizeddistancemap(edgetoprocess,edgetouse,maxedgetouse,log
 				Roi.getContainedPoints(xpoints, ypoints);
 				selectWindow(edgetoprocess);
 				linesvalues=newArray(xpoints.length);
-				
+				linesvaluesBA=newArray(xpoints.length);
 				for (i = 0; i < xpoints.length; i++) {
 					
 						linesvalues[i]=getValue(xpoints[i], ypoints[i]);
@@ -269,24 +286,27 @@ function createnewNormalizeddistancemap(edgetoprocess,edgetouse,maxedgetouse,log
 				}
 				
 				Array.getStatistics(linesvalues, min, max, mean, stdDev) ;
+				maxl=max;
 				if (logwidth){
-				storewidthraw[v]=max;
-				storewidthum[v]=max*pixelWidth;
+				storewidthraw[v]=maxl;
+				storewidthum[v]=maxl*pixelWidth;
 				}
 				if (logBA){
 				// go to the BA mask
+				selectWindow(maskBA);
+				
 				for (i = 0; i < xpoints.length; i++) {
 					
 						linesvaluesBA[i]=getValue(xpoints[i], ypoints[i]);
 						
 				}
 				Array.getStatistics(linesvaluesBA, min, max, mean, stdDev) ;	
-				storeBAraw[v]=(mean*xpoint.length)/255.0; // got nb of pixels by sum of intensity value /255 , integrated intensity been not directly availble, equivalent to mean * nb pixel on the line
+				storeBAraw[v]=(mean*xpoints.length)/255.0; // got nb of pixels by sum of intensity value /255 , integrated intensity been not directly availble, equivalent to mean * nb pixel on the line
 				storeBApc[v]=mean/255.0; // divided by nb points = xpoint.length
 				}
 				selectWindow(edgetoprocess+"_normalized");
 				for (i=0;i<xpoints.length;i++){
-					setPixel(xpoints[i], ypoints[i], linesvalues[i]/max);
+					setPixel(xpoints[i], ypoints[i], linesvalues[i]/maxl);
 				}
 				
 			}
