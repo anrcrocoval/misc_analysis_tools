@@ -1,0 +1,30 @@
+{
+  "createTimestamp": 1556548748591,
+  "modifyTimestamp": 1556548748591,
+  "images": [
+    {
+      "path": "D:\\Romain\\oniris\\2019_04_25_0369.czi",
+      "name": "2019_04_25_0369"
+    },
+    {
+      "path": "D:\\Romain\\FLNA 331-31 6W HPS.ndpi",
+      "name": "FLNA 331-31 6W HPS"
+    },
+    {
+      "path": "D:\\Romain\\FLNA 344-36 3W RA; - 2019-04-10 23.47.35.ndpi",
+      "name": "FLNA 344-36 3W RA; - 2019-04-10 23.47.35"
+    },
+    {
+      "path": "D:\\Romain\\FLNA 433-18 6W BA; - 2019-04-11 01.03.17.ndpi",
+      "name": "FLNA 433-18 6W BA; - 2019-04-11 01.03.17"
+    },
+    {
+      "path": "D:\\Romain\\FLNA 531-35 3W TM; - 2019-04-10 22.15.03.ndpi",
+      "name": "FLNA 531-35 3W TM; - 2019-04-10 22.15.03"
+    },
+    {
+      "path": "D:\\Romain\\oniris\\FLNA_366_6W_PSR.czi",
+      "name": "FLNA_366_6W_PSR"
+    }
+  ]
+}

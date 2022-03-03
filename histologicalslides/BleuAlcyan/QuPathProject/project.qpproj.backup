@@ -1,0 +1,1403 @@
+{
+  "version": "0.3.0",
+  "createTimestamp": 1635412838576,
+  "modifyTimestamp": 1635412838576,
+  "uri": "file:/C:/Users/paul-gilloteaux-p/Documents/GitHub/ANRCROCOVAL/misc_analysis_tools/histologicalslides/BleuAlcyan/QuPathProject/project.qpproj",
+  "lastID": 24,
+  "images": [
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.openslide.OpenslideServerBuilder",
+        "uri": "file:////cronos.sante.univ-nantes.prive/ANRCROCOVAL/DataConstance/Colorations_Histologiques-Standard/KI-3weeks/19PF034_FLNA%20315-50%203W%20BA%20-%202019-02-06%2010.15.02.ndpi",
+        "args": [],
+        "metadata": {
+          "name": "19PF034_FLNA 315-50 3W BA - 2019-02-06 10.15.02.ndpi",
+          "width": 24960,
+          "height": 21248,
+          "sizeZ": 1,
+          "sizeT": 1,
+          "channelType": "DEFAULT",
+          "isRGB": true,
+          "pixelType": "UINT8",
+          "levels": [
+            {
+              "downsample": 1.0,
+              "width": 24960,
+              "height": 21248
+            },
+            {
+              "downsample": 2.0,
+              "width": 12480,
+              "height": 10624
+            },
+            {
+              "downsample": 4.0,
+              "width": 6240,
+              "height": 5312
+            },
+            {
+              "downsample": 8.0,
+              "width": 3120,
+              "height": 2656
+            },
+            {
+              "downsample": 16.0,
+              "width": 1560,
+              "height": 1328
+            },
+            {
+              "downsample": 32.0,
+              "width": 780,
+              "height": 664
+            },
+            {
+              "downsample": 64.0,
+              "width": 390,
+              "height": 332
+            },
+            {
+              "downsample": 128.0,
+              "width": 195,
+              "height": 166
+            }
+          ],
+          "channels": [
+            {
+              "name": "Red",
+              "color": -65536
+            },
+            {
+              "name": "Green",
+              "color": -16711936
+            },
+            {
+              "name": "Blue",
+              "color": -16776961
+            }
+          ],
+          "pixelCalibration": {
+            "pixelWidth": {
+              "value": 0.4560171462446988,
+              "unit": "µm"
+            },
+            "pixelHeight": {
+              "value": 0.4560171462446988,
+              "unit": "µm"
+            },
+            "zSpacing": {
+              "value": 1.0,
+              "unit": "z-slice"
+            },
+            "timeUnit": "SECONDS",
+            "timepoints": []
+          },
+          "magnification": 20.0,
+          "preferredTileWidth": 1920,
+          "preferredTileHeight": 8
+        }
+      },
+      "entryID": 1,
+      "randomizedName": "1895981a-1ff9-4fa7-beea-7d548af433bc",
+      "imageName": "19PF034_FLNA 315-50 3W BA - 2019-02-06 10.15.02.ndpi",
+      "metadata": {
+        "Age": "3W",
+        "Type": "KI"
+      }
+    },
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.openslide.OpenslideServerBuilder",
+        "uri": "file:////cronos.sante.univ-nantes.prive/ANRCROCOVAL/DataConstance/Colorations_Histologiques-Standard/KI-3weeks/19PF034_FLNA%20344-35%203W%20BA%20-%202019-02-06%2010.17.01.ndpi",
+        "args": [],
+        "metadata": {
+          "name": "19PF034_FLNA 344-35 3W BA - 2019-02-06 10.17.01.ndpi",
+          "width": 26880,
+          "height": 18432,
+          "sizeZ": 1,
+          "sizeT": 1,
+          "channelType": "DEFAULT",
+          "isRGB": true,
+          "pixelType": "UINT8",
+          "levels": [
+            {
+              "downsample": 1.0,
+              "width": 26880,
+              "height": 18432
+            },
+            {
+              "downsample": 2.0,
+              "width": 13440,
+              "height": 9216
+            },
+            {
+              "downsample": 4.0,
+              "width": 6720,
+              "height": 4608
+            },
+            {
+              "downsample": 8.0,
+              "width": 3360,
+              "height": 2304
+            },
+            {
+              "downsample": 16.0,
+              "width": 1680,
+              "height": 1152
+            },
+            {
+              "downsample": 32.0,
+              "width": 840,
+              "height": 576
+            },
+            {
+              "downsample": 64.0,
+              "width": 420,
+              "height": 288
+            },
+            {
+              "downsample": 128.0,
+              "width": 210,
+              "height": 144
+            }
+          ],
+          "channels": [
+            {
+              "name": "Red",
+              "color": -65536
+            },
+            {
+              "name": "Green",
+              "color": -16711936
+            },
+            {
+              "name": "Blue",
+              "color": -16776961
+            }
+          ],
+          "pixelCalibration": {
+            "pixelWidth": {
+              "value": 0.4560171462446988,
+              "unit": "µm"
+            },
+            "pixelHeight": {
+              "value": 0.4560171462446988,
+              "unit": "µm"
+            },
+            "zSpacing": {
+              "value": 1.0,
+              "unit": "z-slice"
+            },
+            "timeUnit": "SECONDS",
+            "timepoints": []
+          },
+          "magnification": 20.0,
+          "preferredTileWidth": 1920,
+          "preferredTileHeight": 8
+        }
+      },
+      "entryID": 2,
+      "randomizedName": "0d7972f2-2d8b-4a05-8e92-43027a125443",
+      "imageName": "19PF034_FLNA 344-35 3W BA - 2019-02-06 10.17.01.ndpi",
+      "metadata": {
+        "Age": "3W",
+        "Type": "KI"
+      }
+    },
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.openslide.OpenslideServerBuilder",
+        "uri": "file:////cronos.sante.univ-nantes.prive/ANRCROCOVAL/DataConstance/Colorations_Histologiques-Standard/WT-3weeks/19PF034_FLNA%20314-45%203W%20BA%20-%202019-02-06%2010.22.34.ndpi",
+        "args": [],
+        "metadata": {
+          "name": "19PF034_FLNA 314-45 3W BA - 2019-02-06 10.22.34.ndpi",
+          "width": 24960,
+          "height": 26112,
+          "sizeZ": 1,
+          "sizeT": 1,
+          "channelType": "DEFAULT",
+          "isRGB": true,
+          "pixelType": "UINT8",
+          "levels": [
+            {
+              "downsample": 1.0,
+              "width": 24960,
+              "height": 26112
+            },
+            {
+              "downsample": 2.0,
+              "width": 12480,
+              "height": 13056
+            },
+            {
+              "downsample": 4.0,
+              "width": 6240,
+              "height": 6528
+            },
+            {
+              "downsample": 8.0,
+              "width": 3120,
+              "height": 3264
+            },
+            {
+              "downsample": 16.0,
+              "width": 1560,
+              "height": 1632
+            },
+            {
+              "downsample": 32.0,
+              "width": 780,
+              "height": 816
+            },
+            {
+              "downsample": 64.0,
+              "width": 390,
+              "height": 408
+            },
+            {
+              "downsample": 128.0,
+              "width": 195,
+              "height": 204
+            }
+          ],
+          "channels": [
+            {
+              "name": "Red",
+              "color": -65536
+            },
+            {
+              "name": "Green",
+              "color": -16711936
+            },
+            {
+              "name": "Blue",
+              "color": -16776961
+            }
+          ],
+          "pixelCalibration": {
+            "pixelWidth": {
+              "value": 0.4560171462446988,
+              "unit": "µm"
+            },
+            "pixelHeight": {
+              "value": 0.4560171462446988,
+              "unit": "µm"
+            },
+            "zSpacing": {
+              "value": 1.0,
+              "unit": "z-slice"
+            },
+            "timeUnit": "SECONDS",
+            "timepoints": []
+          },
+          "magnification": 20.0,
+          "preferredTileWidth": 1920,
+          "preferredTileHeight": 8
+        }
+      },
+      "entryID": 3,
+      "randomizedName": "16ee5455-d09a-4833-8b7f-2a686a94fd78",
+      "imageName": "19PF034_FLNA 314-45 3W BA - 2019-02-06 10.22.34.ndpi",
+      "metadata": {
+        "Age": "3W",
+        "Type": "WT"
+      }
+    },
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.openslide.OpenslideServerBuilder",
+        "uri": "file:////cronos.sante.univ-nantes.prive/ANRCROCOVAL/DataConstance/Colorations_Histologiques-Standard/WT-3weeks/19PF034_FLNA%20368-45%203W%20BA%20-%202019-02-06%2010.20.41.ndpi",
+        "args": [],
+        "metadata": {
+          "name": "19PF034_FLNA 368-45 3W BA - 2019-02-06 10.20.41.ndpi",
+          "width": 24960,
+          "height": 18944,
+          "sizeZ": 1,
+          "sizeT": 1,
+          "channelType": "DEFAULT",
+          "isRGB": true,
+          "pixelType": "UINT8",
+          "levels": [
+            {
+              "downsample": 1.0,
+              "width": 24960,
+              "height": 18944
+            },
+            {
+              "downsample": 2.0,
+              "width": 12480,
+              "height": 9472
+            },
+            {
+              "downsample": 4.0,
+              "width": 6240,
+              "height": 4736
+            },
+            {
+              "downsample": 8.0,
+              "width": 3120,
+              "height": 2368
+            },
+            {
+              "downsample": 16.0,
+              "width": 1560,
+              "height": 1184
+            },
+            {
+              "downsample": 32.0,
+              "width": 780,
+              "height": 592
+            },
+            {
+              "downsample": 64.0,
+              "width": 390,
+              "height": 296
+            },
+            {
+              "downsample": 128.0,
+              "width": 195,
+              "height": 148
+            }
+          ],
+          "channels": [
+            {
+              "name": "Red",
+              "color": -65536
+            },
+            {
+              "name": "Green",
+              "color": -16711936
+            },
+            {
+              "name": "Blue",
+              "color": -16776961
+            }
+          ],
+          "pixelCalibration": {
+            "pixelWidth": {
+              "value": 0.4560171462446988,
+              "unit": "µm"
+            },
+            "pixelHeight": {
+              "value": 0.4560171462446988,
+              "unit": "µm"
+            },
+            "zSpacing": {
+              "value": 1.0,
+              "unit": "z-slice"
+            },
+            "timeUnit": "SECONDS",
+            "timepoints": []
+          },
+          "magnification": 20.0,
+          "preferredTileWidth": 1920,
+          "preferredTileHeight": 8
+        }
+      },
+      "entryID": 4,
+      "randomizedName": "a4874d56-3e49-4b73-9a1c-cf52e84b0533",
+      "imageName": "19PF034_FLNA 368-45 3W BA - 2019-02-06 10.20.41.ndpi",
+      "metadata": {
+        "Age": "3W",
+        "Type": "WT"
+      }
+    },
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.bioformats.BioFormatsServerBuilder",
+        "uri": "file://cronos.sante.univ-nantes.prive/ANRCROCOVAL/DataConstance/Colorations_Histologiques-Standard/WT-6weeks/FLNA_393_6W_BA.czi",
+        "args": [
+          "--series",
+          "0"
+        ],
+        "metadata": {
+          "name": "FLNA_393_6W_BA.czi",
+          "width": 50702,
+          "height": 47707,
+          "sizeZ": 1,
+          "sizeT": 1,
+          "channelType": "DEFAULT",
+          "isRGB": true,
+          "pixelType": "UINT8",
+          "levels": [
+            {
+              "downsample": 1.0,
+              "width": 50702,
+              "height": 47707
+            },
+            {
+              "downsample": 2.0,
+              "width": 25351,
+              "height": 23853
+            },
+            {
+              "downsample": 4.0,
+              "width": 12675,
+              "height": 11926
+            },
+            {
+              "downsample": 8.0,
+              "width": 6337,
+              "height": 5963
+            },
+            {
+              "downsample": 16.0,
+              "width": 3168,
+              "height": 2981
+            },
+            {
+              "downsample": 32.0,
+              "width": 1584,
+              "height": 1490
+            },
+            {
+              "downsample": 64.0,
+              "width": 792,
+              "height": 745
+            }
+          ],
+          "channels": [
+            {
+              "name": "Red",
+              "color": -65536
+            },
+            {
+              "name": "Green",
+              "color": -16711936
+            },
+            {
+              "name": "Blue",
+              "color": -16776961
+            }
+          ],
+          "pixelCalibration": {
+            "pixelWidth": {
+              "value": 0.21999999999999997,
+              "unit": "µm"
+            },
+            "pixelHeight": {
+              "value": 0.21999999999999997,
+              "unit": "µm"
+            },
+            "zSpacing": {
+              "value": 1.0,
+              "unit": "z-slice"
+            },
+            "timeUnit": "SECONDS",
+            "timepoints": []
+          },
+          "magnification": 20.0,
+          "preferredTileWidth": 1024,
+          "preferredTileHeight": 1024
+        }
+      },
+      "entryID": 5,
+      "randomizedName": "f696fb5d-11b5-4cec-9a8e-7b1f76f3f1f4",
+      "imageName": "FLNA_393_6W_BA.czi",
+      "metadata": {
+        "Age": "6W",
+        "Type": "WT"
+      }
+    },
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.bioformats.BioFormatsServerBuilder",
+        "uri": "file://cronos.sante.univ-nantes.prive/ANRCROCOVAL/DataConstance/Colorations_Histologiques-Standard/WT-6weeks/FLNA_345_6W_BA.czi",
+        "args": [
+          "--series",
+          "0"
+        ],
+        "metadata": {
+          "name": "FLNA_345_6W_BA.czi",
+          "width": 66819,
+          "height": 49882,
+          "sizeZ": 1,
+          "sizeT": 1,
+          "channelType": "DEFAULT",
+          "isRGB": true,
+          "pixelType": "UINT8",
+          "levels": [
+            {
+              "downsample": 1.0,
+              "width": 66819,
+              "height": 49882
+            },
+            {
+              "downsample": 2.0,
+              "width": 33409,
+              "height": 24941
+            },
+            {
+              "downsample": 4.0,
+              "width": 16704,
+              "height": 12470
+            },
+            {
+              "downsample": 8.0,
+              "width": 8352,
+              "height": 6235
+            },
+            {
+              "downsample": 16.0,
+              "width": 4176,
+              "height": 3117
+            },
+            {
+              "downsample": 32.0,
+              "width": 2088,
+              "height": 1558
+            },
+            {
+              "downsample": 64.0,
+              "width": 1044,
+              "height": 779
+            },
+            {
+              "downsample": 128.0,
+              "width": 522,
+              "height": 389
+            }
+          ],
+          "channels": [
+            {
+              "name": "Red",
+              "color": -65536
+            },
+            {
+              "name": "Green",
+              "color": -16711936
+            },
+            {
+              "name": "Blue",
+              "color": -16776961
+            }
+          ],
+          "pixelCalibration": {
+            "pixelWidth": {
+              "value": 0.21999999999999997,
+              "unit": "µm"
+            },
+            "pixelHeight": {
+              "value": 0.21999999999999997,
+              "unit": "µm"
+            },
+            "zSpacing": {
+              "value": 1.0,
+              "unit": "z-slice"
+            },
+            "timeUnit": "SECONDS",
+            "timepoints": []
+          },
+          "magnification": 20.0,
+          "preferredTileWidth": 1024,
+          "preferredTileHeight": 1024
+        }
+      },
+      "entryID": 6,
+      "randomizedName": "7b10caa4-8fe0-4d6a-8132-ed82daf81adf",
+      "imageName": "FLNA_345_6W_BA.czi",
+      "metadata": {
+        "Age": "6W",
+        "Type": "WT"
+      }
+    },
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.openslide.OpenslideServerBuilder",
+        "uri": "file:////cronos.sante.univ-nantes.prive/ANRCROCOVAL/DataConstance/Colorations_Histologiques-Standard/WT-3weeks/19PF034_FLNA%20465-46%203W%20BA%20-%202019-02-06%2010.29.00.ndpi",
+        "args": [],
+        "metadata": {
+          "name": "19PF034_FLNA 465-46 3W BA - 2019-02-06 10.29.00.ndpi",
+          "width": 28800,
+          "height": 20224,
+          "sizeZ": 1,
+          "sizeT": 1,
+          "channelType": "DEFAULT",
+          "isRGB": true,
+          "pixelType": "UINT8",
+          "levels": [
+            {
+              "downsample": 1.0,
+              "width": 28800,
+              "height": 20224
+            },
+            {
+              "downsample": 2.0,
+              "width": 14400,
+              "height": 10112
+            },
+            {
+              "downsample": 4.0,
+              "width": 7200,
+              "height": 5056
+            },
+            {
+              "downsample": 8.0,
+              "width": 3600,
+              "height": 2528
+            },
+            {
+              "downsample": 16.0,
+              "width": 1800,
+              "height": 1264
+            },
+            {
+              "downsample": 32.0,
+              "width": 900,
+              "height": 632
+            },
+            {
+              "downsample": 64.0,
+              "width": 450,
+              "height": 316
+            },
+            {
+              "downsample": 128.0,
+              "width": 225,
+              "height": 158
+            }
+          ],
+          "channels": [
+            {
+              "name": "Red",
+              "color": -65536
+            },
+            {
+              "name": "Green",
+              "color": -16711936
+            },
+            {
+              "name": "Blue",
+              "color": -16776961
+            }
+          ],
+          "pixelCalibration": {
+            "pixelWidth": {
+              "value": 0.4560171462446988,
+              "unit": "µm"
+            },
+            "pixelHeight": {
+              "value": 0.4560171462446988,
+              "unit": "µm"
+            },
+            "zSpacing": {
+              "value": 1.0,
+              "unit": "z-slice"
+            },
+            "timeUnit": "SECONDS",
+            "timepoints": []
+          },
+          "magnification": 20.0,
+          "preferredTileWidth": 1920,
+          "preferredTileHeight": 8
+        }
+      },
+      "entryID": 7,
+      "randomizedName": "3db9fee6-6225-4862-8f1d-8c1be3259733",
+      "imageName": "19PF034_FLNA 465-46 3W BA - 2019-02-06 10.29.00.ndpi",
+      "metadata": {
+        "Age": "3W",
+        "Type": "WT"
+      }
+    },
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.bioformats.BioFormatsServerBuilder",
+        "uri": "file://cronos.sante.univ-nantes.prive/ANRCROCOVAL/DataConstance/Colorations_Histologiques-Standard/KI-6weeks/FLNA_316_6W_BA.czi",
+        "args": [
+          "--series",
+          "0"
+        ],
+        "metadata": {
+          "name": "FLNA_316_6W_BA.czi",
+          "width": 69442,
+          "height": 48779,
+          "sizeZ": 1,
+          "sizeT": 1,
+          "channelType": "DEFAULT",
+          "isRGB": true,
+          "pixelType": "UINT8",
+          "levels": [
+            {
+              "downsample": 1.0,
+              "width": 69442,
+              "height": 48779
+            },
+            {
+              "downsample": 2.0,
+              "width": 34721,
+              "height": 24389
+            },
+            {
+              "downsample": 4.0,
+              "width": 17360,
+              "height": 12194
+            },
+            {
+              "downsample": 8.0,
+              "width": 8680,
+              "height": 6097
+            },
+            {
+              "downsample": 16.0,
+              "width": 4340,
+              "height": 3048
+            },
+            {
+              "downsample": 32.0,
+              "width": 2170,
+              "height": 1524
+            },
+            {
+              "downsample": 64.0,
+              "width": 1085,
+              "height": 762
+            },
+            {
+              "downsample": 128.0,
+              "width": 542,
+              "height": 381
+            }
+          ],
+          "channels": [
+            {
+              "name": "Red",
+              "color": -65536
+            },
+            {
+              "name": "Green",
+              "color": -16711936
+            },
+            {
+              "name": "Blue",
+              "color": -16776961
+            }
+          ],
+          "pixelCalibration": {
+            "pixelWidth": {
+              "value": 0.21999999999999997,
+              "unit": "µm"
+            },
+            "pixelHeight": {
+              "value": 0.21999999999999997,
+              "unit": "µm"
+            },
+            "zSpacing": {
+              "value": 1.0,
+              "unit": "z-slice"
+            },
+            "timeUnit": "SECONDS",
+            "timepoints": []
+          },
+          "magnification": 20.0,
+          "preferredTileWidth": 1024,
+          "preferredTileHeight": 1024
+        }
+      },
+      "entryID": 8,
+      "randomizedName": "265e740e-6ff7-4738-9741-2a9096cfe600",
+      "imageName": "FLNA_316_6W_BA.czi",
+      "metadata": {
+        "Age": "6W",
+        "Type": "KI"
+      }
+    },
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.openslide.OpenslideServerBuilder",
+        "uri": "file:////cronos.sante.univ-nantes.prive/ANRCROCOVAL/DataConstance/Colorations_Histologiques-Standard/KI-6weeks/FLNA%20416-25%206W%20BA.ndpi",
+        "args": [],
+        "metadata": {
+          "name": "FLNA 416-25 6W BA.ndpi",
+          "width": 32640,
+          "height": 23552,
+          "sizeZ": 1,
+          "sizeT": 1,
+          "channelType": "DEFAULT",
+          "isRGB": true,
+          "pixelType": "UINT8",
+          "levels": [
+            {
+              "downsample": 1.0,
+              "width": 32640,
+              "height": 23552
+            },
+            {
+              "downsample": 2.0,
+              "width": 16320,
+              "height": 11776
+            },
+            {
+              "downsample": 4.0,
+              "width": 8160,
+              "height": 5888
+            },
+            {
+              "downsample": 8.0,
+              "width": 4080,
+              "height": 2944
+            },
+            {
+              "downsample": 16.0,
+              "width": 2040,
+              "height": 1472
+            },
+            {
+              "downsample": 32.0,
+              "width": 1020,
+              "height": 736
+            },
+            {
+              "downsample": 64.0,
+              "width": 510,
+              "height": 368
+            },
+            {
+              "downsample": 128.0,
+              "width": 255,
+              "height": 184
+            }
+          ],
+          "channels": [
+            {
+              "name": "Red",
+              "color": -65536
+            },
+            {
+              "name": "Green",
+              "color": -16711936
+            },
+            {
+              "name": "Blue",
+              "color": -16776961
+            }
+          ],
+          "pixelCalibration": {
+            "pixelWidth": {
+              "value": 0.4560171462446988,
+              "unit": "µm"
+            },
+            "pixelHeight": {
+              "value": 0.4560171462446988,
+              "unit": "µm"
+            },
+            "zSpacing": {
+              "value": 1.0,
+              "unit": "z-slice"
+            },
+            "timeUnit": "SECONDS",
+            "timepoints": []
+          },
+          "magnification": 20.0,
+          "preferredTileWidth": 1920,
+          "preferredTileHeight": 8
+        }
+      },
+      "entryID": 9,
+      "randomizedName": "5f0ef4d6-b6da-4890-ba32-692f6d0424be",
+      "imageName": "FLNA 416-25 6W BA.ndpi",
+      "metadata": {
+        "Age": "6W",
+        "Type": "KI"
+      }
+    },
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.openslide.OpenslideServerBuilder",
+        "uri": "file:////cronos.sante.univ-nantes.prive/ANRCROCOVAL/DataConstance/Colorations_Histologiques-Standard/KI-3weeks/19PF034_FLNA%20531-37%203W%20BA%20-%202019-02-06%2010.33.37.ndpi",
+        "args": []
+      },
+      "entryID": 10,
+      "randomizedName": "fa3f9d65-d913-4993-a1d4-8bc100f12c99",
+      "imageName": "19PF034_FLNA 531-37 3W BA - 2019-02-06 10.33.37.ndpi",
+      "metadata": {
+        "Age": "3W",
+        "Type": "KI"
+      }
+    },
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.openslide.OpenslideServerBuilder",
+        "uri": "file:////cronos.sante.univ-nantes.prive/ANRCROCOVAL/DataConstance/Colorations_Histologiques-Standard/KI-3weeks/19PF034_FLNA%20525-24%203W%20BA%20-%202019-02-06%2010.35.27.ndpi",
+        "args": []
+      },
+      "entryID": 11,
+      "randomizedName": "1332f71b-3c37-49a4-93f0-c6dd45a2db17",
+      "imageName": "19PF034_FLNA 525-24 3W BA - 2019-02-06 10.35.27.ndpi",
+      "metadata": {
+        "Age": "3W",
+        "Type": "KI"
+      }
+    },
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.openslide.OpenslideServerBuilder",
+        "uri": "file:////cronos.sante.univ-nantes.prive/ANRCROCOVAL/DataConstance/Colorations_Histologiques-Standard/KI-3weeks/19PF034_FLNA%20510-4%203W%20BA%20-%202019-02-06%2010.08.27.ndpi",
+        "args": [],
+        "metadata": {
+          "name": "19PF034_FLNA 510-4 3W BA - 2019-02-06 10.08.27.ndpi",
+          "width": 24960,
+          "height": 21504,
+          "sizeZ": 1,
+          "sizeT": 1,
+          "channelType": "DEFAULT",
+          "isRGB": true,
+          "pixelType": "UINT8",
+          "levels": [
+            {
+              "downsample": 1.0,
+              "width": 24960,
+              "height": 21504
+            },
+            {
+              "downsample": 2.0,
+              "width": 12480,
+              "height": 10752
+            },
+            {
+              "downsample": 4.0,
+              "width": 6240,
+              "height": 5376
+            },
+            {
+              "downsample": 8.0,
+              "width": 3120,
+              "height": 2688
+            },
+            {
+              "downsample": 16.0,
+              "width": 1560,
+              "height": 1344
+            },
+            {
+              "downsample": 32.0,
+              "width": 780,
+              "height": 672
+            },
+            {
+              "downsample": 64.0,
+              "width": 390,
+              "height": 336
+            },
+            {
+              "downsample": 128.0,
+              "width": 195,
+              "height": 168
+            }
+          ],
+          "channels": [
+            {
+              "name": "Red",
+              "color": -65536
+            },
+            {
+              "name": "Green",
+              "color": -16711936
+            },
+            {
+              "name": "Blue",
+              "color": -16776961
+            }
+          ],
+          "pixelCalibration": {
+            "pixelWidth": {
+              "value": 0.4560171462446988,
+              "unit": "µm"
+            },
+            "pixelHeight": {
+              "value": 0.4560171462446988,
+              "unit": "µm"
+            },
+            "zSpacing": {
+              "value": 1.0,
+              "unit": "z-slice"
+            },
+            "timeUnit": "SECONDS",
+            "timepoints": []
+          },
+          "magnification": 20.0,
+          "preferredTileWidth": 1920,
+          "preferredTileHeight": 8
+        }
+      },
+      "entryID": 12,
+      "randomizedName": "8e91b3a3-26f9-41b9-a5d3-0e33c9068e58",
+      "imageName": "19PF034_FLNA 510-4 3W BA - 2019-02-06 10.08.27.ndpi",
+      "metadata": {
+        "Age": "3W",
+        "Type": "KI"
+      }
+    },
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.openslide.OpenslideServerBuilder",
+        "uri": "file:////cronos.sante.univ-nantes.prive/ANRCROCOVAL/DataConstance/Colorations_Histologiques-Standard/KI-3weeks/19PF034_FLNA%20503-40%203W%20BA%20-%202019-02-06%2010.31.07.ndpi",
+        "args": []
+      },
+      "entryID": 13,
+      "randomizedName": "d9bef4d7-8835-4a64-bf54-37237971994e",
+      "imageName": "19PF034_FLNA 503-40 3W BA - 2019-02-06 10.31.07.ndpi",
+      "metadata": {
+        "Age": "3W",
+        "Type": "KI"
+      }
+    },
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.openslide.OpenslideServerBuilder",
+        "uri": "file:////cronos.sante.univ-nantes.prive/ANRCROCOVAL/DataConstance/Colorations_Histologiques-Standard/KI-3weeks/19PF034_FLNA%20493-13%203W%20BA%20-%202019-02-06%2010.06.19.ndpi",
+        "args": [],
+        "metadata": {
+          "name": "19PF034_FLNA 493-13 3W BA - 2019-02-06 10.06.19.ndpi",
+          "width": 28800,
+          "height": 19968,
+          "sizeZ": 1,
+          "sizeT": 1,
+          "channelType": "DEFAULT",
+          "isRGB": true,
+          "pixelType": "UINT8",
+          "levels": [
+            {
+              "downsample": 1.0,
+              "width": 28800,
+              "height": 19968
+            },
+            {
+              "downsample": 2.0,
+              "width": 14400,
+              "height": 9984
+            },
+            {
+              "downsample": 4.0,
+              "width": 7200,
+              "height": 4992
+            },
+            {
+              "downsample": 8.0,
+              "width": 3600,
+              "height": 2496
+            },
+            {
+              "downsample": 16.0,
+              "width": 1800,
+              "height": 1248
+            },
+            {
+              "downsample": 32.0,
+              "width": 900,
+              "height": 624
+            },
+            {
+              "downsample": 64.0,
+              "width": 450,
+              "height": 312
+            },
+            {
+              "downsample": 128.0,
+              "width": 225,
+              "height": 156
+            }
+          ],
+          "channels": [
+            {
+              "name": "Red",
+              "color": -65536
+            },
+            {
+              "name": "Green",
+              "color": -16711936
+            },
+            {
+              "name": "Blue",
+              "color": -16776961
+            }
+          ],
+          "pixelCalibration": {
+            "pixelWidth": {
+              "value": 0.4560171462446988,
+              "unit": "µm"
+            },
+            "pixelHeight": {
+              "value": 0.4560171462446988,
+              "unit": "µm"
+            },
+            "zSpacing": {
+              "value": 1.0,
+              "unit": "z-slice"
+            },
+            "timeUnit": "SECONDS",
+            "timepoints": []
+          },
+          "magnification": 20.0,
+          "preferredTileWidth": 1920,
+          "preferredTileHeight": 8
+        }
+      },
+      "entryID": 14,
+      "randomizedName": "e331f7ff-ed0a-476e-a354-21dfc09f0d8f",
+      "imageName": "19PF034_FLNA 493-13 3W BA - 2019-02-06 10.06.19.ndpi",
+      "metadata": {
+        "Age": "3W",
+        "Type": "KI"
+      }
+    },
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.openslide.OpenslideServerBuilder",
+        "uri": "file:////cronos.sante.univ-nantes.prive/ANRCROCOVAL/DataConstance/Colorations_Histologiques-Standard/KI-3weeks/19PF034_FLNA%20467-20%203W%20BA%20-%202019-02-06%2010.12.48.ndpi",
+        "args": []
+      },
+      "entryID": 15,
+      "randomizedName": "818177c4-cc10-4698-a2af-613325dace82",
+      "imageName": "19PF034_FLNA 467-20 3W BA - 2019-02-06 10.12.48.ndpi",
+      "metadata": {
+        "Age": "3W",
+        "Type": "KI"
+      }
+    },
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.openslide.OpenslideServerBuilder",
+        "uri": "file:////cronos.sante.univ-nantes.prive/ANRCROCOVAL/DataConstance/Colorations_Histologiques-Standard/KI-3weeks/19PF034_FLNA%20466-16%203W%20BA%20-%202019-02-06%2010.26.51.ndpi",
+        "args": [],
+        "metadata": {
+          "name": "19PF034_FLNA 466-16 3W BA - 2019-02-06 10.26.51.ndpi",
+          "width": 30720,
+          "height": 21248,
+          "sizeZ": 1,
+          "sizeT": 1,
+          "channelType": "DEFAULT",
+          "isRGB": true,
+          "pixelType": "UINT8",
+          "levels": [
+            {
+              "downsample": 1.0,
+              "width": 30720,
+              "height": 21248
+            },
+            {
+              "downsample": 2.0,
+              "width": 15360,
+              "height": 10624
+            },
+            {
+              "downsample": 4.0,
+              "width": 7680,
+              "height": 5312
+            },
+            {
+              "downsample": 8.0,
+              "width": 3840,
+              "height": 2656
+            },
+            {
+              "downsample": 16.0,
+              "width": 1920,
+              "height": 1328
+            },
+            {
+              "downsample": 32.0,
+              "width": 960,
+              "height": 664
+            },
+            {
+              "downsample": 64.0,
+              "width": 480,
+              "height": 332
+            },
+            {
+              "downsample": 128.0,
+              "width": 240,
+              "height": 166
+            }
+          ],
+          "channels": [
+            {
+              "name": "Red",
+              "color": -65536
+            },
+            {
+              "name": "Green",
+              "color": -16711936
+            },
+            {
+              "name": "Blue",
+              "color": -16776961
+            }
+          ],
+          "pixelCalibration": {
+            "pixelWidth": {
+              "value": 0.4560171462446988,
+              "unit": "µm"
+            },
+            "pixelHeight": {
+              "value": 0.4560171462446988,
+              "unit": "µm"
+            },
+            "zSpacing": {
+              "value": 1.0,
+              "unit": "z-slice"
+            },
+            "timeUnit": "SECONDS",
+            "timepoints": []
+          },
+          "magnification": 20.0,
+          "preferredTileWidth": 1920,
+          "preferredTileHeight": 8
+        }
+      },
+      "entryID": 16,
+      "randomizedName": "7e2d4232-ac27-45b8-b6e6-a2fde31e04c7",
+      "imageName": "19PF034_FLNA 466-16 3W BA - 2019-02-06 10.26.51.ndpi",
+      "metadata": {
+        "Age": "3W",
+        "Type": "KI"
+      }
+    },
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.openslide.OpenslideServerBuilder",
+        "uri": "file:////cronos.sante.univ-nantes.prive/ANRCROCOVAL/DataConstance/Colorations_Histologiques-Standard/KI-3weeks/19PF034_FLNA%20379-49%203W%20BA%20-%202019-02-06%2010.19.01.ndpi",
+        "args": []
+      },
+      "entryID": 17,
+      "randomizedName": "65459063-aa4b-4ccc-987e-a7c22a46acbb",
+      "imageName": "19PF034_FLNA 379-49 3W BA - 2019-02-06 10.19.01.ndpi",
+      "metadata": {
+        "Age": "3W",
+        "Type": "KI"
+      }
+    },
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.openslide.OpenslideServerBuilder",
+        "uri": "file:////cronos.sante.univ-nantes.prive/ANRCROCOVAL/DataConstance/Colorations_Histologiques-Standard/WT-3weeks/19PF034_FLNA%20491-41%203W%20BA%20-%202019-02-06%2010.10.28.ndpi",
+        "args": []
+      },
+      "entryID": 23,
+      "randomizedName": "8ed7f8bc-61bd-4a3d-bb17-63b25d2dae4c",
+      "imageName": "19PF034_FLNA 491-41 3W BA - 2019-02-06 10.10.28.ndpi",
+      "metadata": {
+        "Type": "WT",
+        "Age": "3W"
+      }
+    },
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.openslide.OpenslideServerBuilder",
+        "uri": "file:////cronos.sante.univ-nantes.prive/ANRCROCOVAL/DataConstance/Colorations_Histologiques-Standard/WT-3weeks/19PF034_FLNA%20492-21%203W%20BA%20-%202019-02-06%2010.24.42.ndpi",
+        "args": [],
+        "metadata": {
+          "name": "19PF034_FLNA 492-21 3W BA - 2019-02-06 10.24.42.ndpi",
+          "width": 26880,
+          "height": 21760,
+          "sizeZ": 1,
+          "sizeT": 1,
+          "channelType": "DEFAULT",
+          "isRGB": true,
+          "pixelType": "UINT8",
+          "levels": [
+            {
+              "downsample": 1.0,
+              "width": 26880,
+              "height": 21760
+            },
+            {
+              "downsample": 2.0,
+              "width": 13440,
+              "height": 10880
+            },
+            {
+              "downsample": 4.0,
+              "width": 6720,
+              "height": 5440
+            },
+            {
+              "downsample": 8.0,
+              "width": 3360,
+              "height": 2720
+            },
+            {
+              "downsample": 16.0,
+              "width": 1680,
+              "height": 1360
+            },
+            {
+              "downsample": 32.0,
+              "width": 840,
+              "height": 680
+            },
+            {
+              "downsample": 64.0,
+              "width": 420,
+              "height": 340
+            },
+            {
+              "downsample": 128.0,
+              "width": 210,
+              "height": 170
+            }
+          ],
+          "channels": [
+            {
+              "name": "Red",
+              "color": -65536
+            },
+            {
+              "name": "Green",
+              "color": -16711936
+            },
+            {
+              "name": "Blue",
+              "color": -16776961
+            }
+          ],
+          "pixelCalibration": {
+            "pixelWidth": {
+              "value": 0.4560171462446988,
+              "unit": "µm"
+            },
+            "pixelHeight": {
+              "value": 0.4560171462446988,
+              "unit": "µm"
+            },
+            "zSpacing": {
+              "value": 1.0,
+              "unit": "z-slice"
+            },
+            "timeUnit": "SECONDS",
+            "timepoints": []
+          },
+          "magnification": 20.0,
+          "preferredTileWidth": 1920,
+          "preferredTileHeight": 8
+        }
+      },
+      "entryID": 24,
+      "randomizedName": "18e983fd-94b7-403e-812b-01d6754e35cd",
+      "imageName": "19PF034_FLNA 492-21 3W BA - 2019-02-06 10.24.42.ndpi",
+      "metadata": {
+        "Type": "WT",
+        "Age": "3W"
+      }
+    }
+  ]
+}

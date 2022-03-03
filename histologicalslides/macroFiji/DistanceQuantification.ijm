@@ -1,7 +1,8 @@
 //run("Options...", "iterations=1 count=1 black");
 
-dirwheretosave="F:/Analyses_histo/PluginCellularite/resultatstest/";
-//dirwheretosave="D:/Romain/";
+//dirwheretosave="F:/Analyses_histo/PluginCellularite/resultatstest/";
+
+dirwheretosave="D:/Romain/BleuAlcyan";
 /**
  * identify valve
  */
@@ -20,7 +21,7 @@ run("Gaussian Blur...", "sigma=10");
 // Create the mask and morphologically process it
 setAutoThreshold("Otsu");
 //setThreshold(0, 36);
-setOption("BlackBackground", false);
+setOption("BlackBackground", true);
 run("Convert to Mask");
 
 
