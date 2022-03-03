@@ -7,7 +7,6 @@ listfile=dir()
 
 i=0
 data=NULL
-
 for (n in listfile)
 {
 	
@@ -15,18 +14,21 @@ for (n in listfile)
 	if (grepl("Absolutewidth.csv", n)==TRUE)
 	{
 		print(n)
-		dat <-read.csv(n, sep=",")
-		plot(dat$storenormalizedpos[-1],dat$storewidthum[-1],type="b",pch=20, col =2) #plot all but first element
+		datW <-read.csv(n, sep=",")
+		plot(datW$storenormalizedpos[-1],datW$storewidthum[-1],type="b",pch=20, col =2) #plot all but first element
 		par(new=TRUE)
 		n=str_replace(n, "Absolutewidth.csv", "AbsoluteBA.csv")
 		print(n)
-		dat <-read.csv(n, sep=",")
-		plot(dat$storenormalizedposBA[-1],dat$storeBApc[-1]*100,type="b",,pch=20,col=3, axes = FALSE, xlab="",ylab="") #plot all but first element
-		axis(side=4,at=pretty(range(dat$storeBApc[-1]*100)))		
+		datBA <-read.csv(n, sep=",")
+		plot(datBA$storenormalizedposBA[-1],datBA$storeBApc[-1]*100,type="b",,pch=20,col=3, axes = FALSE, xlab="",ylab="") #plot all but first element
+		axis(side=4,at=pretty(range(datBA$storeBApc[-1]*100)))		
 		mtext("pc covered by BA on geodesic lines", side =4,line=3)
 		title(str_replace(n, "AbsoluteBA.csv",""))
-
+	
 		readline(prompt="Press [enter] to continue")
+		readline(prompt="Press [enter] to continue")
+
+
 	}
 
 
