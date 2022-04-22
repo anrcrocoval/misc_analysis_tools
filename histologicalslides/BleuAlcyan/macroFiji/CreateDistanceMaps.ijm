@@ -4,7 +4,7 @@
 logwidth=true;
 logBA=true;
 //dirwheretosave="C:/Users/perri/GITHUB/misc_analysis_tools/histologicalslides/BleuAlcyan/test/";
-dirwheretosave="C:/Users/paul-gilloteaux-p/Documents/GitHub/ANRCROCOVAL/misc_analysis_tools/histologicalslides/BleuAlcyan/test2/";
+dirwheretosave="C:/Users/paul-gilloteaux-p/Documents/GitHub/ANRCROCOVAL/misc_analysis_tools/histologicalslides/BleuAlcyan/test3/";
 /**
  * identify valve
  */

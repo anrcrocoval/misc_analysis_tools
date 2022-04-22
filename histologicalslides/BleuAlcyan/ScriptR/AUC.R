@@ -1,4 +1,4 @@
-setwd("C:/Users/paul-gilloteaux-p/Documents/GitHub/ANRCROCOVAL/misc_analysis_tools/histologicalslides/BleuAlcyan/test")
+setwd("C:/Users/paul-gilloteaux-p/Documents/GitHub/ANRCROCOVAL/misc_analysis_tools/histologicalslides/BleuAlcyan/test3")
 #file.choose()
 # Install the released version from CRAN:
 #install.packages("stringr")
@@ -72,5 +72,5 @@ for (n in listfile)
 	}
 
 }
-write.csv(finaltab,"resultAUCNew.csv", row.names=FALSE)
+write.csv(finaltab,"resultAUCNewdata.csv", row.names=FALSE)
 
